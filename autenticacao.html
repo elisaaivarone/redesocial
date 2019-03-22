@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="src/style.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -19,22 +20,43 @@
                 <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
                 <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
                 <br>
-                <button class="btn btn-lg btn-block btn-default" id="authEmail">Submit</button>
-                <h6 class="text-center"><a href="" class="btn-link"> Esqueceu senha?</a></h6>
+                <button class="btn btn-lg btn-block btn-default btn-special-color" id="authEmail">Submit</button>
+                <h6 class="text-center"><a href="" class="btn-link">Esqueceu a senha?</a></h6>
                 <br>
             </form>
             <p class="text-center">
-                    <button class="btn btn-lg btn-primary" id="authFacebook"><i class="fab fa-facebook-square"></i></button>
-                    <button class="btn btn-lg btn-primary" id="authGmail"><i class="fab fa-google-plus-square"></i></button>
+                    <button class="btn btn-lg btn-primary" id="authFacebook"><i class="fab fa-facebook-square">Facebook</i></button>
+                    <button class="btn btn-lg btn-primary" id="authGmail"><i class="fab fa-google-plus-square">Google</i></button>
                     <br>
-                    <h5 class="text-center"><a href="" class="btn-link">Criar uma nova conta.</a></h5>
+                    <button class="btn-link" id="createLogin">Criar uma nova conta.</button>
                     </p>
               </div>
 
             
     </section>
 
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- <script>
+            window.fbAsyncInit = function() {
+              FB.init({
+                appId      : '{your-app-id}',
+                cookie     : true,
+                xfbml      : true,
+                version    : '{api-version}'
+              });
+                
+              FB.AppEvents.logPageView();   
+                
+            };
+          
+            (function(d, s, id){
+               var js, fjs = d.getElementsByTagName(s)[0];
+               if (d.getElementById(id)) {return;}
+               js = d.createElement(s); js.id = id;
+               js.src = "https://connect.facebook.net/en_US/sdk.js";
+               fjs.parentNode.insertBefore(js, fjs);
+             }(document, 'script', 'facebook-jssdk'));
+          </script> -->
     <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
     <script>
         // Initialize Firebase
@@ -49,7 +71,7 @@
         firebase.initializeApp(config);
     </script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="src/autenticacao.js"></script>
 </body>
 
 </html>

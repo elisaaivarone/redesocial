@@ -1,80 +1,102 @@
-var authEmail = document.getElementById ('authEmail');
-var authFacebook = document.getElementById ('authFacebook');
-var authGmail = document.getElementById ('authGmail');
-var createLogin = document.getElementById ('createLogin');
 
-//Input
-var email = document.getElementById ('email');
-var pwd = document.getElementById ('pwd');
+// // window.fbAsyncInit = function() {
+// //     FB.init({
+// //       appId      : '{your-app-id}',
+// //       cookie     : true,
+// //       xfbml      : true,
+// //       version    : '{api-version}'
+// //     });
+      
+// //     FB.AppEvents.logPageView();   
+      
+// //   };
 
-//Usuario
+// //   (function(d, s, id){
+// //      var js, fjs = d.getElementsByTagName(s)[0];
+// //      if (d.getElementById(id)) {return;}
+// //      js = d.createElement(s); js.id = id;
+// //      js.src = "https://connect.facebook.net/en_US/sdk.js";
+// //      fjs.parentNode.insertBefore(js, fjs);
+// //    }(document, 'script', 'facebook-jssdk'));
 
-createLogin.addEventListener('click', function() {
-    firebase
-    .auth()
-    .createUserWithEmailAndPassword(email.value, pwd.value)
-    .then(function(){
-        alert('Bem Vindo ' + email.value);
-    })
-    .catch(function(){
-        alert('Falha ao cadastrar')
-    })
+// authGmail.addEventListener('click', function(){
+// var provider = new firebase.auth.GoogleAuthProvider();
+// signIn(provider)
+// });
 
-})
-
-// Autenticar email e senha
-
-authEmail.addEventListener('click', function() {
-    firebase
-    .auth()
-    .signInWithEmailAndPassword(email.value, pwd.value)
-    .then(function (){
-        alert('Autenticado' + email.value);
-})
-    .catch(function(){
-        alert('Falha ao autenticar')
-    })
-})
-
-// window.fbAsyncInit = function() {
-//     FB.init({
-//       appId      : '{your-app-id}',
-//       cookie     : true,
-//       xfbml      : true,
-//       version    : '{api-version}'
+// authFacebook.addEventListener('click', function(){
+//     var provider = new firebase.auth.FacebookAuthProvider();
+//     signIn(provider)
 //     });
-      
-//     FB.AppEvents.logPageView();   
-      
-//   };
-
-//   (function(d, s, id){
-//      var js, fjs = d.getElementsByTagName(s)[0];
-//      if (d.getElementById(id)) {return;}
-//      js = d.createElement(s); js.id = id;
-//      js.src = "https://connect.facebook.net/en_US/sdk.js";
-//      fjs.parentNode.insertBefore(js, fjs);
-//    }(document, 'script', 'facebook-jssdk'));
-
-authGmail.addEventListener('click', function(){
-var provider = new firebase.auth.GoogleAuthProvider();
-signIn(provider)
-});
-
-authFacebook.addEventListener('click', function(){
-    var provider = new firebase.auth.FacebookAuthProvider();
-    signIn(provider)
-    });
     
 
-function signIn(provider){
-    firebase.auth()
-    .signInWithPopup(provider)
-    .then(function(result){
-        var token = result.credential.acessToken;
-        alert('Bem vindo')
+// function signIn(provider){
+//     firebase.auth()
+//     .signInWithPopup(provider)
+//     .then(function(result){
+//         var token = result.credential.acessToken;
+//         alert('Bem vindo')
+//     })
+//     .catch(function(){
+//         alert('Falha na autenticação')
+//     })
+// }   
+
+//Login e-mail e senha
+$(document).ready(function () {
+    $("#authLogin").click(function (event) {
+        event.preventDefault();
+        
+        var email = $("#email").val();
+        var password = $("#password").val();
+        console.log(email,password);
+
+        firebase.auth().signInWithEmailAndPassword(email, password)
+            .then(function () {
+                window.location = 'index.html';
+            })
+            .catch(function (error) {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                alert(errorMessage);
+
+            });
+
     })
-    .catch(function(){
-        alert('Falha na autenticação')
-    })
-}
+
+
+//Fazer cadastro
+$(document).ready(function () {
+    $("#createLogin").click(function (event) {
+        event.preventDefault();
+        var email = $("#email").val();
+        var password = $("#password").val();
+    
+        firebase.auth().createUserWithEmailAndPassword(email, password)
+            .then(function () {
+                window.location = 'perfil.html';
+            })
+            .catch(function (error) {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                   alert(errorMessage);
+
+            });
+      })
+   })
+})
+
+//Fazer login com Gmail
+       googleSignIn =() => {
+        var provider = new firebase.auth.GoogleAuthProvider()
+        firebase.auth().signInWithPopup(provider)
+        .then(function(result) {
+          console.log(result);
+     })
+     .catch(function(error) {
+         console.log(error);
+         
+       });
+        }
+       
+   

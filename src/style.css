@@ -2,3 +2,10 @@
 /*.btn-special-color {
     background-color: pink;
 }*/
+
+.container {
+    display: flex;
+    justify-content: center;
+    margin-top: 140px;
+    
+}

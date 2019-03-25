@@ -19,7 +19,6 @@ $(document).ready(function () {
     })
 
     //Fazer cadastro
-    $(document).ready(function () {
         $("#createLogin").click(function (event) {
             event.preventDefault();
             var email = $("#email").val();
@@ -27,7 +26,7 @@ $(document).ready(function () {
 
             firebase.auth().createUserWithEmailAndPassword(email, password)
                 .then(function () {
-                    window.location = 'perfil.html';
+                    window.location = 'index.html';
                 })
                 .catch(function (error) {
                     var errorCode = error.code;
@@ -35,11 +34,10 @@ $(document).ready(function () {
                     alert(errorMessage);
                 });
         })
-    })
-})
+    
 
 //Login com Gmail    
-$(document).ready(function () {
+
     $("#authGmail").click(function (event) {
         event.preventDefault();
         var provider = new firebase.auth.GoogleAuthProvider();
@@ -47,7 +45,7 @@ $(document).ready(function () {
             .then(function (result) {
                 var token = result.credential.acessToken;
                 var user = result.user;
-                window.location = 'perfil.html';
+                window.location = 'index.html';
             })
             .catch(function (error) {
                 var errorCode = error.code;
@@ -57,10 +55,9 @@ $(document).ready(function () {
                 alert('Falha na autenticação')
             })
     })
-})
+
 
 //Login com Facebook
-$(document).ready(function () {
     $("#authFacebook").click(function (event) {
         event.preventDefault();
         var provider = new firebase.auth.FacebookAuthProvider();
@@ -68,9 +65,10 @@ $(document).ready(function () {
             .then(function (result) {
                 var token = result.credential.acessToken;
                 var user = result.user;
-                window.location = 'perfil.html';
+                window.location = 'index.html';
             })
             .catch(function (error) {
+                console.log(error);
                 var errorCode = error.code;
                 var errorMessage = error.message;
                 var email = error.email;

@@ -8,8 +8,9 @@ $(document).ready(function () {
         console.log(email, password);
 
         firebase.auth().signInWithEmailAndPassword(email, password)
-            .then(function () {
-                window.location = 'index.html';
+            .then(function (response) {
+                // window.location = 'index.html';
+                console.log(response)
             })
             .catch(function (error) {
                 var errorCode = error.code;

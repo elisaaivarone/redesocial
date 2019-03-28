@@ -7,6 +7,7 @@ $(document).ready(function() {
                 let childKey = childSnapshot.key;
                 let childData = childSnapshot.val();
                 console.log(childData.text)
+
                 $("#post-total").prepend(`<button class="post-one" id="btn-delete">Delete</button>`)
                 $("#post-total").prepend(`<li class="post-one">${time()}</li>`);
                 $("#post-total").prepend(`<li class="post-one">${childData.text}</li>`);
@@ -39,12 +40,14 @@ $(document).ready(function() {
         $("#btn-delete").click(function() {
             $(".post-one").remove()
         })
+        $('#btnpost').prop("disabled", true)
         $('form')[0].reset()
     })
 
 
 
-    $("#signup").click(function() {
+    $("#signup").click(function(event) {
+        event.preventDefault();
         firebase.auth().signOut().then(function() {
             // Sign-out successful.
         }).catch(function(error) {

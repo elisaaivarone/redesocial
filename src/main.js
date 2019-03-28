@@ -5,12 +5,10 @@ $(document).ready(function() {
         .then(function(snapshot) {
             snapshot.forEach(function(childSnapshot) {
                 let childKey = childSnapshot.key;
+                //console.log(childKey)
                 let childData = childSnapshot.val();
-                console.log(childData.text)
-
-                $("#post-total").prepend(`<button class="post-one" id="btn-delete">Delete</button>`)
-                $("#post-total").prepend(`<li class="post-one">${time()}</li>`);
-                $("#post-total").prepend(`<li class="post-one">${childData.text}</li>`);
+                //console.log(childData.text)
+                creatPost(childData.text, childKey)
             });
         })
 
@@ -28,22 +26,23 @@ $(document).ready(function() {
 
     $("#btnpost").click(function(event) {
         event.preventDefault();
-        let post = $("#public").val();
-        database.ref("tasks").push({
+        let post = $("#public").val() + time();
+        let newPost = database.ref("tasks").push({
             text: post
         });
-
-
-        let btnDelete = $("#post-total").prepend(`<button class="post-one" id="btn-delete">Delete</button>`)
-        let postTwo = $("#post-total").prepend(`<li class="post-one">${time()}</li>`);
-        let postOne = $("#post-total").prepend(`<li class="post-one">${post}</li>`);
-        $("#btn-delete").click(function() {
-            $(".post-one").remove()
-        })
+        creatPost(post, newPost.key)
         $('#btnpost').prop("disabled", true)
         $('form')[0].reset()
     })
 
+    function creatPost(post, key) {
+        $("#post-total").prepend(`<li class="post-one"><span>${post}</span><button id="btn-delete" data-id="${key}">Delete</button></li><li class="post-one">${time()}</li>`);
+        $(`button[data-id=${key}]`).click(function() {
+            $(this).parent().remove()
+            database.ref("tasks/" + key).remove()
+            console.log($(this).parent())
+        })
+    }
 
 
     $("#signup").click(function(event) {

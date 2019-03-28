@@ -4,8 +4,8 @@ $(document).ready(function() {
     database.ref("/tasks").once('value')
         .then(function(snapshot) {
             snapshot.forEach(function(childSnapshot) {
-                var childKey = childSnapshot.key;
-                var childData = childSnapshot.val();
+                let childKey = childSnapshot.key;
+                let childData = childSnapshot.val();
                 console.log(childData.text)
                 $("#post-total").prepend(`<button class="post-one" id="btn-delete">Delete</button>`)
                 $("#post-total").prepend(`<li class="post-one">${time()}</li>`);

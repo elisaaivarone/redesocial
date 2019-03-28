@@ -3,8 +3,8 @@ $(document).ready(function () {
     $("#authLogin").click(function (event) {
         event.preventDefault();
 
-        var email = $("#email").val();
-        var password = $("#password").val();
+        let email = $("#email").val();
+        let password = $("#password").val();
         console.log(email, password);
 
         firebase.auth().signInWithEmailAndPassword(email, password)
@@ -13,8 +13,8 @@ $(document).ready(function () {
                 console.log(response)
             })
             .catch(function (error) {
-                var errorCode = error.code;
-                var errorMessage = error.message;
+                let errorCode = error.code;
+                let errorMessage = error.message;
                 alert(errorMessage);
             });
     })
@@ -22,16 +22,16 @@ $(document).ready(function () {
     //Fazer cadastro
         $("#createLogin").click(function (event) {
             event.preventDefault();
-            var email = $("#email").val();
-            var password = $("#password").val();
+            let email = $("#email").val();
+            let password = $("#password").val();
 
             firebase.auth().createUserWithEmailAndPassword(email, password)
                 .then(function () {
                     window.location = 'index.html';
                 })
                 .catch(function (error) {
-                    var errorCode = error.code;
-                    var errorMessage = error.message;
+                    let errorCode = error.code;
+                    let errorMessage = error.message;
                     alert(errorMessage);
                 });
         })
@@ -41,18 +41,18 @@ $(document).ready(function () {
 
     $("#authGmail").click(function (event) {
         event.preventDefault();
-        var provider = new firebase.auth.GoogleAuthProvider();
+        let provider = new firebase.auth.GoogleAuthProvider();
         firebase.auth().signInWithPopup(provider)
             .then(function (result) {
-                var token = result.credential.acessToken;
-                var user = result.user;
+                let token = result.credential.acessToken;
+                let user = result.user;
                 window.location = 'index.html';
             })
             .catch(function (error) {
-                var errorCode = error.code;
-                var errorMessage = error.message;
-                var email = error.email;
-                var credential = error.credential;
+                let errorCode = error.code;
+                let errorMessage = error.message;
+                let email = error.email;
+                let credential = error.credential;
                 alert('Falha na autenticação')
             })
     })
@@ -61,19 +61,19 @@ $(document).ready(function () {
 //Login com Facebook
     $("#authFacebook").click(function (event) {
         event.preventDefault();
-        var provider = new firebase.auth.FacebookAuthProvider();
+        let provider = new firebase.auth.FacebookAuthProvider();
         firebase.auth().signInWithPopup(provider)
             .then(function (result) {
-                var token = result.credential.acessToken;
-                var user = result.user;
+                let token = result.credential.acessToken;
+                let user = result.user;
                 window.location = 'index.html';
             })
             .catch(function (error) {
                 console.log(error);
-                var errorCode = error.code;
-                var errorMessage = error.message;
-                var email = error.email;
-                var credential = error.credential;
+                let errorCode = error.code;
+                let errorMessage = error.message;
+                let email = error.email;
+                let credential = error.credential;
                 alert('Falha na autenticação')
             })
     })

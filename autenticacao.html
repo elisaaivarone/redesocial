@@ -9,7 +9,8 @@
     <!--Fonts e Icons-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y"
         crossorigin="anonymous">
-    <!-- Latest compiled and minified CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+        <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
         crossorigin="anonymous">
     <!--Firebase-->
@@ -21,22 +22,24 @@
 
 <body>
     <section class="container">
-        <div class="col-md-4">
+        <div class="col-md-5">
+            <img class="logo" src="imagem/logo.jpeg" alt="logo">
             <h2 class="text-center title-login">Faça seu login</h2>
             <form action="/action_page.php" class="form-group">
                 <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
                 <input type="password" class="form-control" id="password" placeholder="Enter password" name="pwd">
                 <br>
-                <button class="btn btn-lg btn-block btn-default btn-special-color" id="authLogin">Submit</button>
+                <button class="btn btn-lg btn-block btn-default" id="authLogin">Entrar</button>
                 <h6 class="text-center"><a href="" class="btn-link">Esqueceu a senha?</a></h6>
                 <br>
+                <p class="text-center">
+                        <button class="btn btn-lg btn-primary" id="authFacebook"><i class="fab fa-facebook-square">Facebook</i></button>
+                        <button class="btn btn-lg btn-primary" id="authGmail"><i class="fab fa-google-plus-square">Google</i></button>
+                        <br>
+                        <h5 class="text-center"><a href="" class="badge badge-dark"id="createLogin">Criar uma nova conta.</a></h5>
+                    </p>
             </form>
-            <p class="text-center">
-                <button class="btn btn-lg btn-primary" id="authFacebook"><i class="fab fa-facebook-square">Facebook</i></button>
-                <button class="btn btn-lg btn-primary" id="authGmail"><i class="fab fa-google-plus-square">Google</i></button>
-                <br>
-                <h5 class="text-center"><a href="" class="btn-link"id="createLogin">Criar uma nova conta.</a></h5>
-            </p>
+           
         </div>
 
 

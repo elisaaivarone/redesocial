@@ -4,19 +4,39 @@
 }*/
 
 body {
-    margin: 0;
-    padding: 0;
+    background: url(fundo.jpg) no-repeat center fixed transparent;
+    width: 100%;
 }
+
+
 .container {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    margin-top: 140px;
-    border: 1px groove gray;
+    margin-top: 10px;
+    
 }
 
 .form-control {
     border: none;
-    margin-top: 20px;
+    margin-top: 10px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    border-radius: 50%;
+    width: 40%;
+    margin: auto;
+    padding: 20px;
+
+}
+.form-group {
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.418);
+    padding: 25px 40px;
     
+}
+
+.title-login, .submit, .create-btn {
+    font-family: 'Roboto Slab', serif;
+    font-size: 18px;
 }

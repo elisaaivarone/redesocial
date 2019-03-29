@@ -1,7 +1,8 @@
-var database = firebase.database();
+let database = firebase.database();
+let USER_ID = window.location.search.match(/\?id=(.*)/)[1]
 
 $(document).ready(function() {
-    database.ref("/tasks").once('value')
+    database.ref("tasks/" + USER_ID).once('value')
         .then(function(snapshot) {
             snapshot.forEach(function(childSnapshot) {
                 let childKey = childSnapshot.key;
@@ -21,13 +22,10 @@ $(document).ready(function() {
         }
     })
 
-
-
-
     $("#btnpost").click(function(event) {
         event.preventDefault();
         let post = $("#public").val() + time();
-        let newPost = database.ref("tasks").push({
+        let newPost = database.ref("tasks/" + USER_ID).push({
             text: post
         });
         creatPost(post, newPost.key)
@@ -36,19 +34,99 @@ $(document).ready(function() {
     })
 
     function creatPost(post, key) {
-        $("#post-total").prepend(`<li class="post-one"><span>${post}</span><button id="btn-delete" data-id="${key}">Delete</button></li><li class="post-one">${time()}</li>`);
-        $(`button[data-id=${key}]`).click(function() {
-            $(this).parent().remove()
-            database.ref("tasks/" + key).remove()
-            console.log($(this).parent())
-        })
-    }
+        $("#post-total").prepend(`
+        <li class="post-one">
+        <span data-text-id="${key}">${post}</span>
+        <a href="#edit" data-edit-id="${key}">Edit</a>
+        <a href="#delete" data-delete-id="${key}">Delete</button>
+        </li>`);
 
+        $(`a[data-delete-id=${key}]`).click(function(event) {
+            event.preventDefault();
+            let id = $(this).attr("href");
+            let alturaTela = $(document).height();
+            let larguraTela = $(window).width();
+
+            //colocando o fundo preto
+            $('#mascara').css({ 'width': larguraTela, 'height': alturaTela });
+            $('#mascara').fadeIn(1000);
+            $('#mascara').fadeTo("slow", 0.8);
+
+            let left = ($(window).width() / 2) - ($(id).width() / 2);
+            let top = ($(window).height() / 2) - ($(id).height() / 2);
+
+            $(id).css({ 'top': top, 'left': left });
+            $(id).show();
+
+            $("#mascara").click(function() {
+                $(this).hide();
+                $(".window").hide();
+            });
+
+            $("#btn-delete").click(function(event) {
+                event.preventDefault()
+                $(`a[data-delete-id=${key}]`).parent().remove()
+                database.ref("tasks/" + USER_ID + "/" + key).remove()
+                $("#mascara").hide();
+                $(".window").hide();
+            })
+
+            $('.fechar').click(function(event) {
+                event.preventDefault();
+                $("#mascara").hide();
+                $(".window").hide();
+
+            })
+
+        })
+
+        $(`a[data-edit-id=${key}]`).click(function(event) {
+            event.preventDefault();
+            let id = $(this).attr("href");
+            let alturaTela = $(document).height();
+            let larguraTela = $(window).width();
+
+            //colocando o fundo preto
+            $('#mascara').css({ 'width': larguraTela, 'height': alturaTela });
+            $('#mascara').fadeIn(1000);
+            $('#mascara').fadeTo("slow", 0.8);
+
+            let left = ($(window).width() / 2) - ($(id).width() / 2);
+            let top = ($(window).height() / 2) - ($(id).height() / 2);
+
+            $(id).css({ 'top': top, 'left': left });
+            $(id).show();
+        });
+
+        $("#mascara").click(function() {
+            $(this).hide();
+            $(".window").hide();
+        });
+
+        $("#btn-edit").click(function(event) {
+            event.preventDefault();
+            let newText = $("#text-edit").val()
+            database.ref("tasks/" + USER_ID + "/" + key).update({
+                text: newText
+            })
+            $(`span[data-text-id=${key}]`).text(newText)
+            $("#mascara").hide();
+            $(".window").hide();
+        })
+
+        $('.fechar').click(function(event) {
+            event.preventDefault();
+            $("#mascara").hide();
+            $(".window").hide();
+
+        })
+
+    }
 
     $("#signup").click(function(event) {
         event.preventDefault();
         firebase.auth().signOut().then(function() {
-            // Sign-out successful.
+            window.location = "autenticacao.html"
         }).catch(function(error) {
             // An error happened.
         });
@@ -58,17 +136,9 @@ $(document).ready(function() {
 
 function time() {
     let today = new Date();
-    let hour = today.getHours();
-    let min = today.getMinutes();
     let year = today.getFullYear();
     let day = today.getDate();
     let month = today.getMonth();
-    let strMin = min.toString();
-    let strHour = hour.toString();
-    if (strHour.length < 2)
-        strHour = "0" + strHour;
-    if (strMin.length < 2)
-        strMin = "0" + strMin;
-    let timeToday = day + "/" + (month + 1) + "/" + year + " " + strHour + ":" + strMin;
+    let timeToday = " " + day + "/" + (month + 1) + "/" + year;
     return timeToday
 }

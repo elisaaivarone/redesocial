@@ -1,6 +1,6 @@
 //Login e-mail e senha
-$(document).ready(function () {
-    $("#authLogin").click(function (event) {
+$(document).ready(function() {
+    $("#authLogin").click(function(event) {
         event.preventDefault();
 
         let email = $("#email").val();
@@ -8,11 +8,11 @@ $(document).ready(function () {
         console.log(email, password);
 
         firebase.auth().signInWithEmailAndPassword(email, password)
-            .then(function (response) {
-                window.location = 'index.html';
-                console.log(response)
+            .then(function(response) {
+                console.log(response.user.uid)
+                window.location = 'index.html?id=' + response.user.uid;
             })
-            .catch(function (error) {
+            .catch(function(error) {
                 let errorCode = error.code;
                 let errorMessage = error.message;
                 alert(errorMessage);
@@ -20,35 +20,35 @@ $(document).ready(function () {
     })
 
     //Fazer cadastro
-        $("#createLogin").click(function (event) {
-            event.preventDefault();
-            let email = $("#email").val();
-            let password = $("#password").val();
+    $("#createLogin").click(function(event) {
+        event.preventDefault();
+        let email = $("#email").val();
+        let password = $("#password").val();
 
-            firebase.auth().createUserWithEmailAndPassword(email, password)
-                .then(function () {
-                    window.location = 'index.html';
-                })
-                .catch(function (error) {
-                    let errorCode = error.code;
-                    let errorMessage = error.message;
-                    alert(errorMessage);
-                });
-        })
-    
+        firebase.auth().createUserWithEmailAndPassword(email, password)
+            .then(function(response) {
+                window.location = 'index.html?id=' + response.user.uid;
+            })
+            .catch(function(error) {
+                let errorCode = error.code;
+                let errorMessage = error.message;
+                alert(errorMessage);
+            });
+    })
 
-//Login com Gmail    
 
-    $("#authGmail").click(function (event) {
+    //Login com Gmail    
+
+    $("#authGmail").click(function(event) {
         event.preventDefault();
         let provider = new firebase.auth.GoogleAuthProvider();
         firebase.auth().signInWithPopup(provider)
-            .then(function (result) {
+            .then(function(result) {
                 let token = result.credential.acessToken;
                 let user = result.user;
-                window.location = 'index.html';
+                window.location = 'index.html?id=' + response.user.uid;
             })
-            .catch(function (error) {
+            .catch(function(error) {
                 let errorCode = error.code;
                 let errorMessage = error.message;
                 let email = error.email;
@@ -58,17 +58,17 @@ $(document).ready(function () {
     })
 
 
-//Login com Facebook
-    $("#authFacebook").click(function (event) {
+    //Login com Facebook
+    $("#authFacebook").click(function(event) {
         event.preventDefault();
         let provider = new firebase.auth.FacebookAuthProvider();
         firebase.auth().signInWithPopup(provider)
-            .then(function (result) {
+            .then(function(result) {
                 let token = result.credential.acessToken;
                 let user = result.user;
-                window.location = 'index.html';
+                window.location = 'index.html?id=' + response.user.uid;
             })
-            .catch(function (error) {
+            .catch(function(error) {
                 console.log(error);
                 let errorCode = error.code;
                 let errorMessage = error.message;

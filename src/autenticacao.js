@@ -9,7 +9,7 @@ $(document).ready(function () {
 
         firebase.auth().signInWithEmailAndPassword(email, password)
             .then(function (response) {
-                // window.location = 'index.html';
+                window.location = 'index.html';
                 console.log(response)
             })
             .catch(function (error) {

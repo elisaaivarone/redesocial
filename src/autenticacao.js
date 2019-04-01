@@ -10,7 +10,7 @@ $(document).ready(function() {
         firebase.auth().signInWithEmailAndPassword(email, password)
             .then(function(response) {
                 console.log(response.user.uid)
-                window.location = 'index.html?id=' + response.user.uid;;
+                window.location = 'index.html?id=' + response.user.uid;
             })
             .catch(function(error) {
                 let errorCode = error.code;

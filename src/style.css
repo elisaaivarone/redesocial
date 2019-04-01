@@ -18,14 +18,15 @@ body {
     margin-top: 10px;
 }
 
-.logo {
+
+/* .logo {
     display: flex;
     align-items: center;
     border-radius: 50%;
     width: 40%;
     margin: auto;
     padding: 20px;
-}
+} */
 
 .form-group {
     box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.418);
@@ -39,29 +40,46 @@ body {
     font-size: 18px;
 }
 
-.window {
-    display: none;
-    width: 300px;
-    height: 300px;
-    position: absolute;
-    left: 0;
-    top: 0;
-    background: #FFF;
-    z-index: 9900;
-    padding: 10px;
-    border-radius: 10px;
+.list-group-item {
+    word-wrap: break-word;
+    margin: 2% 5% 0% 5%;
 }
 
-#mascara {
-    display: none;
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 9000;
-    background-color: #000;
+.btn {
+    margin-left: 1%;
+    margin-top: 2%;
 }
 
-.fechar {
+.edit {
+    margin-left: 5%;
+}
+
+.img-responsive {
     display: block;
-    text-align: right;
+    width: 100%;
+}
+
+
+/* .like {
+    outline: none;
+    border: none;
+    width: 5%;
+    height: 5%;
+} */
+
+@media screen and (min-width:1200px) {
+    #img-timeline {
+        display: none;
+    }
+}
+
+@media screen and (max-width:1200px) {
+    #text-timeline {
+        display: none;
+    }
+    /* .like {
+        border: none;
+        width: 15%;
+        height: 15%;
+    } */
 }

@@ -19,6 +19,11 @@
 
         $("#signup").click(signUp)
 
+        $("#perfil").click(function (event) {
+            event.preventDefault();
+            window.location = 'perfil.html?id=' + USER_ID;
+          })
+
     })
 
     function creatPost(post, key) {

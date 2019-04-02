@@ -18,25 +18,7 @@ $(document).ready(function() {
                 alert(errorMessage);
             });
     })
-
-    //Fazer cadastro
-    $("#createLogin").click(function(event) {
-        event.preventDefault();
-        let email = $("#email").val();
-        let password = $("#password").val();
-
-        firebase.auth().createUserWithEmailAndPassword(email, password)
-            .then(function(response) {
-                window.location = 'index.html?id=' + response.user.uid;
-            })
-            .catch(function(error) {
-                let errorCode = error.code;
-                let errorMessage = error.message;
-                alert(errorMessage);
-            });
-    })
-
-
+    
     //Login com Gmail    
 
     $("#authGmail").click(function(event) {

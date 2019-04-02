@@ -28,7 +28,7 @@ $(document).ready(function() {
             .then(function(result) {
                 let token = result.credential.acessToken;
                 let user = result.user;
-                window.location = 'index.html?id=' + response.user.uid;
+                window.location = 'index.html?id=' + result.user.uid;
             })
             .catch(function(error) {
                 let errorCode = error.code;
@@ -48,7 +48,7 @@ $(document).ready(function() {
             .then(function(result) {
                 let token = result.credential.acessToken;
                 let user = result.user;
-                window.location = 'index.html?id=' + response.user.uid;
+                window.location = 'index.html?id=' + result.user.uid;
             })
             .catch(function(error) {
                 console.log(error);

@@ -8,8 +8,8 @@
                     let childKey = childSnapshot.key;
                     //console.log(childKey)
                     let childData = childSnapshot.val();
-                    //console.log(childData.text)
-                    creatPost(childData.text, childKey)
+                    //console.log(childData)
+                    creatPost(childData.text, childData.likes, childKey)
                 });
             })
 
@@ -19,27 +19,32 @@
 
         $("#signup").click(signUp)
 
-        $("#perfil").click(function (event) {
+        $("#perfil").click(function(event) {
             event.preventDefault();
             window.location = 'perfil.html?id=' + USER_ID;
-          })
+        })
 
     })
 
-    function creatPost(post, key) {
+    function creatPost(post, likes, key) {
         $("#post-total").prepend(`
     <li>
-    <p class="list-group-item" data-text-id=${key}>${post}<span class="badge" data-like-id=${key} value=0 >0<span/></p>
+    <p class="list-group-item" data-text-id=${key}>${post}</p>
     <button type="button" class="btn btn-primary edit" data-edit-id=${key} data-toggle="modal" data-target="#myModal">Editar</button>
     <button type="button" class="btn btn-primary" data-delete-id=${key} data-toggle="modal" data-target="#myModal-delete">Deletar</button>
-    <input type="button" class="btn btn-primary" data-like-id=${key} value="Curtir" />
+    <input type="button" class="btn btn-primary" data-like-id=${key} value="Curtir" /><span class="btn" data-like-id=${key} id="likes" >${likes}</span>
     </li>`);
 
         let count = 0;
         $(`input[data-like-id=${key}]`).click(function(event) {
             event.preventDefault();
             count += 1;
-            $(`span[data-like-id=${key}]`).text(count)
+            let newLike = parseInt($(`span[data-like-id=${key}]`).text()) + 1
+            $(`span[data-like-id=${key}]`).text(newLike)
+                //console.log(newLike)
+            database.ref("tasks/" + USER_ID + "/" + key).update({
+                likes: newLike
+            })
         })
 
         $(`button[data-delete-id=${key}]`).click(function(event) {
@@ -54,14 +59,15 @@
 
         $(`button[data-edit-id=${key}]`).click(function(event) {
             event.preventDefault();
+            let oldText = $(`p[data-text-id=${key}]`).text()
+            $(".old-text").html(`<input class="form-control" rows="5" id="text-edit" value=${oldText} />`)
             $("#btn-edit").click(function(event) {
                 event.preventDefault();
-                let newText = $("#text-edit").val()
+                let newText = $("#text-edit").val() + time()
                 $(`p[data-text-id=${key}]`).text(newText)
                 database.ref("tasks/" + USER_ID + "/" + key).update({
-                        text: newText
-                    })
-                    //window.location.reload()
+                    text: newText
+                })
             });
         });
     }
@@ -70,7 +76,7 @@
 
     function disableBtn() {
         if ($('#public').val().length === 0) {
-            $('#btnpost').prop("disabled", true)
+            $('#btndata.text').prop("disabled", true)
         } else {
             $('#btnpost').prop("disabled", false)
         }
@@ -78,11 +84,13 @@
 
     function newPost(event) {
         event.preventDefault();
-        let post = $("#public").val();
+        let post = $("#public").val() + time();
+        let postLikes = 0
         let newPost = database.ref("tasks/" + USER_ID).push({
-            text: post
+            text: post,
+            likes: 0
         });
-        creatPost(post, newPost.key)
+        creatPost(post, postLikes, newPost.key)
         $('#btnpost').prop("disabled", true)
         $('form')[0].reset()
     }

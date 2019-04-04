@@ -1,81 +1,76 @@
 $(document).ready(function () {
   let database = firebase.database();
-  let idUser = window.location.search.match(/\?id=(.*)/)[1];
+  let USER_ID = window.location.search.match(/\?id=(.*)/)[1];
+  let storage = firebase.storage().ref("photos");
 
-  database.ref("users/" + idUser).once('value')
+  database.ref("users/" + USER_ID).once('value')
+  .then(function (snapshot) {
+    snapshot.forEach(function (childSnapshot) {
+      let childData = childSnapshot.val();
+
+      if (childData.photo === "") {
+        $("#perfil").attr("src", "imagem/perfil.png");
+      }
+      else {
+        storage.child(USER_ID).getDownloadURL().then(url => {
+          $("#perfil").attr("src", url)
+        })
+      }
+
+      $("#name").val(childData.name);
+      $("#years").val(childData.years);
+      $("#city").val(childData.city);
+      $("#state").val(childData.state);
+      $("#status").val(childData.status);
+      $("#kids").val(childData.kids);
+      $("#about").val(childData.about);
+
+    })
+
+    $("#photo").change(function (event) {
+      var arquivo = event.target.files[0];
+      storage.child(USER_ID).put(arquivo).then(snapshot => {
+        console.log("snapshot", snapshot);
+      })
+
+    })
+
+    $("#save").prop("disabled", false);
+    $("#back").prop("disabled", false);
+
+  })
+  .catch(function (error) {
+    $("#back").prop("disabled", false)
+    alert("Erro no carregamento das informações.")
+  });
+
+$("#save").click(function () {
+  let users = database.ref("users/" + USER_ID);
+
+  users.once("value")
     .then(function (snapshot) {
       snapshot.forEach(function (childSnapshot) {
-        let childData = childSnapshot.val();
+        let key = childSnapshot.key;
+        database.ref("users/" + USER_ID + "/" + key).update({
+          about: $("#about").val(),
+          city: $("#city").val(),
+          kids: $("#kids").val(),
+          name: $("#name").val(),
+          photo: $("#photo").val(),
+          state: $("#state").val(),
+          status: $("#status").val(),
+          years: $("#years").val()
+        })
 
-        $("#infos").append(
-          `
-          <img src=${childData.photo}>
-          <input type="file">
-          <table>
-            <tr>
-              <th><label>Nome:</label></th>
-              <td><input type=text id=newName value=${childData.name}></td>
-            </tr>
-            <tr>
-              <th><label>Idade:</label></th>
-              <td><input type=number id=newYears value=${childData.years}> anos</td>
-            </tr>
-            <tr>
-              <th><label>Estado:</label></th>
-              <td><input type=text id=newState value=${childData.state}></td>
-            </tr>
-            <tr>
-              <th><label>Status Civil:</label></th>
-              <td><input type=text id=newStatus value=${childData.status}></td>
-            </tr>
-            <tr>
-              <th><label>Filho(s):</label></th>
-              <td><input type=text id=newKids value=${childData.kids}></td>
-            </tr>
-            <tr>
-              <th><label>Sobre mim:</label></th>
-              <td><textarea id=newAbout>${childData.about}</textarea></td>
-            </tr>
-          </table>
-        `
-        )
       })
     })
-    .catch(function (error) {
-      alert("Erro na página!")
-    });
-
-  $("#save").click(function () {
-
-    // var postData = {
-    //   name: $("#newName").val(),
-    //   photo: "imagem/perfil.png",
-    //   years: $("#newYears").val(),
-    //   state: $("#newState").val(),
-    //   status: $("#newStatus").val(),
-    //   kids: $("#newKids").val(),
-    //   about: $("#newAbout").val()
-    // };
-
-    // var newDadosKey = database.ref('users' + idUser).child;
-
-    // console.log(newDadosKey)
-
-    // var updates = {};
-    // updates['/users/' + newDadosKey] = postData;
-
-    // database.ref().update(updates);
+  alert("Dados salvos com sucesso!")
+  window.location = 'perfil.html?id=' + USER_ID;
+});
 
 
-    // database.ref('users/' + idUser).set({
-    // name: $("#newName").val(),
-    // photo: "imagem/perfil.png",
-    // years: $("#newYears").val(),
-    // state: $("#newState").val(),
-    // status: $("#newStatus").val(),
-    // kids: $("#newKids").val(),
-    // about: $("#newAbout").val()
-    //     })
-    // window.location = 'index.html?id=' + idUser;
-  })
+$("#back").click(function () {
+  window.location = 'perfil.html?id=' + USER_ID;
+});
+
 });

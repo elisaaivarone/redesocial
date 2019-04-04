@@ -17,37 +17,38 @@
   <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-database.js"></script>
-  <script src="src/config.js"> </script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-storage.js"></script>
+  <script src="src/config.js"></script>
   <title>Sign Up</title>
 
 </head>
 
 <body>
-    <img id="img-timeline" class="img-responsive" src="imagem/logotipo.jpeg" alt="logo">
-    <section class="container">
-        <div class="col-md-5">
-        <h2 class="text-center title-login">Cadastre-se</h2>
+  <img id="img-timeline" class="img-responsive" src="imagem/logotipo.jpeg" alt="logo">
+  <section class="container">
+    <div class="col-md-5">
+      <h2 class="text-center title-login">Cadastre-se</h2>
 
-  <form class="form-group">
-    <label for="inputname">Nome:</label>
-    <input type="text" class="form-control input-sm" id="inputnam">
-    <label for="inputemail">E-mail:</label>
-    <input type="email" class="form-control input-sm" id="inputemaill">
-    <label for="inputpwd">Senha:</label>
-    <input type="password" class="form-control input-sm" id="inputpwd">
-    <label for="inputAge">Quantos filhos:</label>
-    <input type="number" class="form-control input-sm" id="inputAge">
-    <label for="inputCity">Cidade:</label>
-    <input type="text" class="form-control input-sm" id="inputCity">
-    <label for="inputState">Estado:</label>
-    <input type="text" class="form-control input-sm" id="inputState"><br>
-    <button class="btn btn-lg btn-block btn-default "id="createLogin">Cadastrar</button><br>
+      <form class="form-group">
+        <label for="inputname">Nome:</label>
+        <input type="text" class="form-control input-sm" id="inputnam">
+        <label for="inputemail">E-mail:</label>
+        <input type="email" class="form-control input-sm" id="inputemaill">
+        <label for="inputpwd">Senha:</label>
+        <input type="password" class="form-control input-sm" id="inputpwd">
+        <label for="inputKids">Quantos filhos:</label>
+        <input type="number" class="form-control input-sm" id="inputKids">
+        <label for="inputCity">Cidade:</label>
+        <input type="text" class="form-control input-sm" id="inputCity">
+        <label for="inputState">Estado:</label>
+        <input type="text" class="form-control input-sm" id="inputState"><br>
+        <button class="btn btn-lg btn-block btn-default " id="createLogin">Cadastrar</button><br>
 
-    <label>Cadastrar usando:</label>
-    <button id="authFace"><i class="fab fa-facebook-square">Facebook</i></button>
-    <button id="authGmail"><i class="fab fa-google-plus-square">Google</i></button>
-  </form>
-  </div>
+        <label>Cadastrar usando:</label>
+        <button class="btn btn-lg btn-primary" id="authFacebook"><i class="fab fa-facebook-square">Facebook</i></button>
+        <button class="btn btn-lg btn-primary" id="authGmail"><i class="fab fa-google-plus-square">Google</i></button>
+      </form>
+    </div>
   </section>
 
 

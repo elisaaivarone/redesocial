@@ -1,54 +1,48 @@
 $(document).ready(function (response) {
   let database = firebase.database();
-  let idUser = window.location.search.match(/\?id=(.*)/)[1];
+  let USER_ID = window.location.search.match(/\?id=(.*)/)[1];
+  let storage = firebase.storage().ref("photos");
 
-  database.ref("users/" + idUser).once('value')
+  database.ref("users/" + USER_ID).once('value')
     .then(function (snapshot) {
       snapshot.forEach(function (childSnapshot) {
         let childData = childSnapshot.val();
+        console.log(childData.name)
 
-        $("#dados").prepend(
-          `
-          <img src=${childData.photo}>
-        <table>
-          <tr>
-            <th><label>Nome:</label></th>
-            <td>${childData.name}</td>
-          </tr>
-          <tr>
-            <th><label>Idade:</label></th>
-            <td>${childData.years}</td>
-          </tr>
-          <tr>
-            <th><label>Estado:</label></th>
-            <td><i class="fas fa-map-marker-alt">${childData.state}</i></td>
-          </tr>
-          <tr>
-            <th><label>Status Civil:</label></th>
-            <td>${childData.status}</td>
-          </tr>
-          <tr>
-            <th><label>Filho(s):</label></th>
-            <td>${childData.kids}</td>
-          </tr>
-          <tr>
-            <th><label>Sobre mim:</label></th>
-            <td>${childData.about}</td>
-          </tr>
-        </table>
-        `
-        )
+        if (childData.photo === "") {
+          $("#perfil").attr("src", "imagem/perfil.png");
+        }
+        else {
+          storage.child(USER_ID).getDownloadURL().then(url => {
+            $("#perfil").attr("src", url)
+          })
+        }
+
+        $("#name").text(childData.name);
+        $("#city").text(childData.city);
+        $("#years").text(childData.years);
+        $("#state").text(childData.state);
+        $("#status").text(childData.status);
+        $("#kids").text(childData.kids);
+        $("#about").text(childData.about);
       })
+
+      $("#edit").prop("disabled", false)
+      $("#back").prop("disabled", false)
 
     })
     .catch(function (error) {
-      alert("Erro na página!")
-    })
+      $("#back").prop("disabled", false)
+      alert("Erro no carregamento das informações.")
+    });
 
-    $("#edit").click(function (event) {
-      event.preventDefault();
-      window.location = 'edit.html?id=' +idUser;
-    })
+  $("#edit").click(function () {
+    window.location = 'edit.html?id=' + USER_ID;
+  });
+
+  $("#back").click(function () {
+    window.location = 'index.html?id=' + USER_ID;
+  });
 
 });
 

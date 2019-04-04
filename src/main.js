@@ -9,7 +9,7 @@
                     //console.log(childKey)
                     let childData = childSnapshot.val();
                     //console.log(childData)
-                    creatPost(childData.text, childData.likes, childKey)
+                    creatPost(childData.text, childData.likes, childData.filter, childData.date, childKey)
                 });
             })
 
@@ -26,10 +26,12 @@
 
     })
 
-    function creatPost(post, likes, key) {
+    function creatPost(post, likes, filterPost, datePost, key) {
         $("#post-total").prepend(`
     <li>
-    <p class="list-group-item" data-text-id=${key}>${post}</p>
+    <p class="list-group-item filter" data-text-id=${key}>${post}</p>
+    <p class="list-group-item filter" data-date-id=${key}>${datePost}</p>
+    <p class="list-group-item filter" data-filter-id=${key}>Post ${filterPost}</p>
     <button type="button" class="btn btn-primary edit" data-edit-id=${key} data-toggle="modal" data-target="#myModal">Editar</button>
     <button type="button" class="btn btn-primary" data-delete-id=${key} data-toggle="modal" data-target="#myModal-delete">Deletar</button>
     <input type="button" class="btn btn-primary" data-like-id=${key} value="Curtir" /><span class="btn" data-like-id=${key} id="likes" >${likes}</span>
@@ -60,23 +62,45 @@
         $(`button[data-edit-id=${key}]`).click(function(event) {
             event.preventDefault();
             let oldText = $(`p[data-text-id=${key}]`).text()
-            $(".old-text").html(`<input class="form-control" rows="5" id="text-edit" value=${oldText} />`)
+            $("#myModal").html(`
+            <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h4 class="modal-title">Edite seu post</h4>
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="form-group">
+                    <input class="form-control" rows="5" id="text-edit" value=${oldText} />
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" id="btn-edit" class="btn btn-primary" data-dismiss="modal">OK</button>
+                </div>
+
+            </div>
+        </div>
+            `)
             $("#btn-edit").click(function(event) {
                 event.preventDefault();
-                let newText = $("#text-edit").val() + time()
+                let newText = $("#text-edit").val()
+                let newDate = time()
                 $(`p[data-text-id=${key}]`).text(newText)
+                $(`p[data-date-id=${key}]`).text(newDate)
                 database.ref("tasks/" + USER_ID + "/" + key).update({
-                    text: newText
+                    text: newText,
+                    date: newDate
                 })
             });
         });
     }
 
-
-
     function disableBtn() {
         if ($('#public').val().length === 0) {
-            $('#btndata.text').prop("disabled", true)
+            $('#btnpost').prop("disabled", true)
         } else {
             $('#btnpost').prop("disabled", false)
         }
@@ -84,13 +108,17 @@
 
     function newPost(event) {
         event.preventDefault();
-        let post = $("#public").val() + time();
+        let post = $("#public").val()
         let postLikes = 0
+        let datePost = time()
+        let selectPost = $("#select-post option:selected").text()
         let newPost = database.ref("tasks/" + USER_ID).push({
             text: post,
-            likes: 0
+            likes: 0,
+            filter: selectPost,
+            date: time()
         });
-        creatPost(post, postLikes, newPost.key)
+        creatPost(post, postLikes, selectPost, datePost, newPost.key)
         $('#btnpost').prop("disabled", true)
         $('form')[0].reset()
     }

@@ -38,23 +38,21 @@
         font-family: 'Roboto Slab', serif;
         font-size: 18px;
     }
-    
-    .nav {
+    /* .nav {
         background: url(fundo.jpg);
         margin-top: 20px;
         box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.418);
-    }
+    } */
     
     .title-signup {
         display: inline-flex;
         margin-left: 40px;
         padding: 20px;
     }
-    
-    .navbar-right {
+    /* .navbar-right {
         margin-right: 20px;
         padding: 20px;
-    }
+    } */
     
     .list-group-item {
         word-wrap: break-word;
@@ -80,6 +78,10 @@
         border: none;
         width: 5%;
         height: 5%;
+    }
+    
+    .filter {
+        margin-top: 0;
     }
     
     @media screen and (min-width:1200px) {

@@ -33,9 +33,16 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
+                    <li class="active"><a href="">Home</a></li>
+                    <li><a href="#" id="perfil">Perfil</a></li>
                     <li class="dropdown">
-                        <li><a href="#" id="perfil">Perfil</a></li>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Filtrar posts<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Público</a></li>
+                            <li><a href="#">Privado</a></li>
+                            <li><a href="#">Amigos</a></li>
+                        </ul>
+                    </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="autenticacao.html" id="signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
@@ -50,44 +57,27 @@
                 <label for="comment"></label>
                 <textarea class="form-control" rows="5" id="public" placeholder="Tire suas dúvidas ou compartilhe a sua experiência"></textarea>
                 <button type="button" class="btn btn-primary" id="btnpost" disabled>Publicar</button>
+                <select class="btn" id="select-post">
+                      <option class="public-select">Público</option>
+                      <option class="private-select">Privado</option>
+                      <option class="friends-select">Amigos</option>
+                    </select>
             </div>
         </div>
-        </main>
     </form>
     <ul class="list-group" id="post-total">
     </ul>
     <div class="container mt-3">
 
-        <!-- The Modal -->
+        <!-- The Modal edit -->
         <div class="modal fade" id="myModal">
-            <div class="modal-dialog">
-                <div class="modal-content">
 
-                    <!-- Modal Header -->
-                    <div class="modal-header">
-                        <h4 class="modal-title">Edite seu post</h4>
-                        <button type="button" class="close" data-dismiss="modal">×</button>
-                    </div>
-
-                    <!-- Modal body -->
-                    <div class="modal-body">
-                        <div class="form-group old-text">
-                        </div>
-                    </div>
-
-                    <!-- Modal footer -->
-                    <div class="modal-footer">
-                        <button type="button" id="btn-edit" class="btn btn-danger" data-dismiss="modal">OK</button>
-                    </div>
-
-                </div>
-            </div>
         </div>
 
     </div>
     <div class="container mt-3">
 
-        <!-- The Modal -->
+        <!-- The Modal delete-->
         <div class="modal fade" id="myModal-delete">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -100,12 +90,12 @@
 
                     <!-- Modal body -->
                     <div class="modal-body">
-                        <button type="button" id="btn-delete" class="btn btn-danger" data-dismiss="modal">Deletar</button>
+                        <button type="button" id="btn-delete" class="btn btn-primary" data-dismiss="modal">Deletar</button>
                     </div>
 
                     <!-- Modal footer -->
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
                     </div>
 
                 </div>

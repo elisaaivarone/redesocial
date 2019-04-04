@@ -17,6 +17,7 @@
   <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-storage.js"></script>
   <script src="src/config.js"> </script>
   </script>
   <title>Meu perfil</title>
@@ -26,10 +27,40 @@
 <body>
   <h1>Meu Perfil</h1>
 
-  <div id="dados">
-  </div>
-  
-  <button id="edit">Editar</button>
+  <img src="" id="perfil" width=150px>
+  <table>
+    <tr>
+      <th>Nome:</th>
+      <td id="name"></td>
+    </tr>
+    <tr>
+      <th>Idade:</th>
+      <td id="years"></td>
+    </tr>
+    <tr>
+      <th>Cidade:</th>
+      <td id="city"></td>
+    </tr>
+    <tr>
+      <th>Estado:<i class="fas fa-map-marker-alt"></i></th>
+      <td id="state"></td>
+    </tr>
+    <tr>
+      <th>Status Civil:</th>
+      <td id="status"></td>
+    </tr>
+    <tr>
+      <th>Filho(s):</th>
+      <td id="kids"></td>
+    </tr>
+    <tr>
+      <th>Sobre mim:</th>
+      <td id="about"></td>
+    </tr>
+  </table>
+
+  <button id="edit" class="btn btn-primary" disabled>Editar</button>
+  <button id="back" class="btn btn-primary" disabled>Voltar</button>
 
   <script src="http://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>

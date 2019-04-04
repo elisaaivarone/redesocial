@@ -17,8 +17,8 @@
   <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-database.js"></script>
-  <script src="src/config.js"> </script>
-  </script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-storage.js"></script>
+  <script src="src/config.js"></script>
   <title>Editar de perfil</title>
 
 </head>
@@ -26,10 +26,40 @@
 <body>
   <h1>Minhas informações:</h1>
 
-  <div id="infos">
-  </div>
-
-  <button id="save">Salvar</button>
+  <img src="" id="perfil" width=150px>
+  <input type="file" id="photo">
+  <table>
+    <tr>
+      <th>Nome:</th>
+      <td><input type=text id=name></td>
+    </tr>
+    <tr>
+      <th>Idade:</th>
+      <td><input type=number id=years></td>
+    </tr>
+    <tr>
+      <th>Cidade:</th>
+      <td><input type=text id=city></td>
+    </tr>
+    <tr>
+      <th>Estado:</th>
+      <td><input type=text id=state></td>
+    </tr>
+    <tr>
+      <th>Status Civil:</th>
+      <td><input type=text id=status></td>
+    </tr>
+    <tr>
+      <th>Quantos filhos?</th>
+      <td><input type=number id=kids></td>
+    </tr>
+    <tr>
+      <th>Sobre mim:</th>
+      <td><textarea id=about></textarea></td>
+    </tr>
+  </table>
+  <button id="save" class="btn btn-primary" disabled>Salvar</button>
+  <button id="back" class="btn btn-primary" disabled>Voltar</button>
 
   <script src="http://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>

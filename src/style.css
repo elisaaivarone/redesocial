@@ -80,8 +80,18 @@
         height: 5%;
     }
     
-    .filter {
-        margin-top: 0;
+    .text {
+        font-family: 'Roboto Slab', serif;
+        font-size: 14px;
+    }
+    
+    .text-min {
+        font-family: 'Roboto Slab', serif;
+        font-size: 12px;
+    }
+    
+    .name {
+        padding-top: 10%;
     }
     
     @media screen and (min-width:1200px) {

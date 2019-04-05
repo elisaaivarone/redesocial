@@ -8,12 +8,15 @@
     <link rel="stylesheet" href="src/style.css" />
     <!--Fonts e Icons-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous">
+
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
     <!--Firebase-->
     <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-storage.js"></script>
     <script src="src/config.js">
     </script>
     <title>Kids Life</title>
@@ -21,7 +24,7 @@
 
 <body>
     <img id="img-timeline" class="img-responsive" src="imagem/logotipo.jpeg">
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-inverse nav-timeline">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -55,7 +58,7 @@
         <div class="txtarea">
             <div class="form-group">
                 <label for="comment"></label>
-                <textarea class="form-control" rows="5" id="public" placeholder="Tire suas dúvidas ou compartilhe a sua experiência"></textarea>
+                <textarea class="form-control text" rows="5" id="public" placeholder="Tire suas dúvidas ou compartilhe a sua experiência"></textarea>
                 <button type="button" class="btn btn-primary" id="btnpost" disabled>Publicar</button>
                 <select class="btn" id="select-post">
                       <option class="public-select">Público</option>
@@ -75,6 +78,16 @@
         </div>
 
     </div>
+
+    <div class="container mt-3">
+
+        <!-- The Modal comment -->
+        <div class="modal fade" id="myModal-comment">
+
+        </div>
+
+    </div>
+
     <div class="container mt-3">
 
         <!-- The Modal delete-->

@@ -18,7 +18,7 @@ $(document).ready(function() {
                 alert(errorMessage);
             });
     })
-    
+
     //Login com Gmail    
 
     $("#authGmail").click(function(event) {

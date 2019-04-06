@@ -7,6 +7,7 @@
                 snapshot.forEach(function(childSnapshot) {
                     let childKey = childSnapshot.key;
                     let childData = childSnapshot.val();
+
                     creatPost(childData.text, childData.likes, childData.filter, childData.date, childKey)
                 });
             })
@@ -16,22 +17,22 @@
                 snapshot.forEach(function(childSnapshot) {
                     let childKey = childSnapshot.key;
                     let childData = childSnapshot.val();
-
-                    if (childData.photo === "") {
+                    let photoUser = childData.photo
+                    if (photoUser === "") {
                         $("#photo").attr("src", "imagem/perfil.png");
                     } else {
                         storage.child(USER_ID).getDownloadURL().then(url => {
                             $("#photo").attr("src", url)
                         })
                     }
-                    namePost(childData.name, childData.photo)
+                    namePost(childData.name, photoUser)
                 });
             })
 
 
         $('#public').keyup(disableBtn)
 
-        $("#btnpost").click(newPost)
+        $("#btnpost").on("click", newPost)
 
         $("#signup").click(signUp)
 
@@ -44,9 +45,9 @@
 
 
     function namePost(name, photo) {
-        $("#post").prepend(`
+        $(`div[data-total-id=${USER_ID}]`).prepend(`
         <div class="row align-items-center">
-  <div class="col-xs-3">
+        <div class="col-xs-3">
         <img src=${photo} class="img-responsive img-circle" id="photo" alt=${name}></img>
         </div>
         <div class="col-xs-9 align-items-end">
@@ -55,24 +56,24 @@
         </div>
 `)
     }
-    console.log(namePost)
 
     function creatPost(post, likes, filterPost, datePost, key) {
         $("#post-total").prepend(`
     <li>
-    <div id="post" data-total-id=${key} class="list-group-item well">
+    <div id="post" data-total-id=${USER_ID} class="list-group-item well">
     <div class="row align-items-end">
     <div class="col-xs-3">
-    <p id="post" class="text-muted text-min text-center" data-date-id=${key}>${datePost}</p>
+    <p class="text-muted text-min text-center" data-date-id=${key}>${datePost}</p>
     </div>
     </div>
     <p class="text-center text" data-text-id=${key}>${post}</p>
     <p class="text-min" data-filter-id=${key}>Post ${filterPost}</p>
-    
+    <textarea class="form-control" id="text-comment" placeholder="Faça seu comentário"></textarea>
+    <button type="button" class="btn btn-primary" id="btn-comment" data-comment-text-id=${key}>OK</button>
     </div>
     <button type="button" class="btn btn-primary edit" data-edit-id=${key} data-toggle="modal" data-target="#myModal"><i class="far fa-edit"></i></button>
     <button type="button" class="btn btn-primary " data-delete-id=${key} data-toggle="modal" data-target="#myModal-delete"><i class="far fa-trash-alt"></i></button>
-    
+    <button type="button" class="btn btn-primary " data-comment-id=${key} data-toggle="modal" data-target="#myModal-comment">Comentários</button>
     <button type="button" class="btn btn-primary" data-like-id=${key}><i class="far fa-thumbs-up"></i> <span data-like-id=${key} id="likes">${likes}</span> </button>
     </li>
     `);
@@ -88,37 +89,57 @@
             })
         })
 
-        // $(`button[data-comment-id=${key}]`).click(function(event) {
-        //     event.preventDefault();
-        //     let comments = $("#text-comment").val()
-        //     $("#myModal-comment").html(`
-        //     <div class="modal-dialog">
-        //     <div class="modal-content">
+        $(`button[data-comment-id=${key}]`).click(function(event) {
+            event.preventDefault();
+            let comments = $("#text-comment").val()
+            if (comments === undefined) {
+                comments = ""
+            }
+            $("#myModal-comment").html(`
+            <div class="modal-dialog">
+            <div class="modal-content">
 
-        //         <div class="modal-header">
-        //             <h4 class="modal-title">Faça seu comentário</h4>
-        //             <button type="button" class="close" data-dismiss="modal">×</button>
-        //         </div>
+                <div class="modal-header">
+                    <h4 class="modal-title">Comentários</h4>
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                </div>
 
-        //         <div class="modal-body">
-        //             <div class="form-group" >
-        //             <ul id="comment-new">
-        //             </ul>
-        //             <input class="form-control" id="text-comment" />
-        //             </div>
-        //         </div>
+                <div class="modal-body">
+                    <div class="form-group" >
+                    <ul class="list-group" id="comment-new">
+                    </ul>
 
-        //         <div class="modal-footer">
-        //             <button type="button" id="btn-comment" class="btn btn-primary" data-dismiss="modal">OK</button>
-        //         </div>
+                    </div>
+                </div>
 
-        //     </div>
-        // </div>
-        //     `)
-        //     $("#comment-new").prepend(`
-        //             <li>${comments}</li>
-        //             `)
-        // });
+                <div class="modal-footer">
+                    
+                </div>
+
+            </div>
+        </div>
+            `)
+            $("#comment-new").prepend(`
+              <li>
+              teste
+              </li>
+            `)
+        })
+
+
+        $("#btn-comment").click(function(event) {
+            event.preventDefault();
+            let comments = $("#text-comment").val()
+            $('form')[1].reset()
+            database.ref("tasks/" + USER_ID + "/" + key + "/" + "comments").push({
+                    comment: comments
+                })
+                // $('#btn-comment').prop("disabled", true)
+
+        })
+
+
+
 
 
         $(`button[data-delete-id=${key}]`).click(function(event) {
@@ -186,6 +207,9 @@
         let datePost = time()
         let selectPost = $("#select-post option:selected").text()
         let newPost = database.ref("tasks/" + USER_ID).push({
+            name: "",
+            photo: "",
+            comments: "",
             text: post,
             likes: 0,
             filter: selectPost,

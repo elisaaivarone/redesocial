@@ -57,21 +57,30 @@ No arquivo README.md você deverá documentar o processo: o que descobriu sobre 
 - Poder bloquear/excluir amigos
 - Poder publicar imagens
 * Quem são os principais usuários do produto
-- Mães/pais/responsáveis que querem compartilhar experiências e conhecer mais sobre saúde, educação, alimentação das crianças.
+ 
+ Mães/pais/responsáveis que querem compartilhar experiências e conhecer mais sobre saúde, educação, alimentação das crianças.
 * Como descobriu as necessidades dos usuários
-- Através de relatos de mães/pais/responsáveis interessados em temas sobre crianças e ter acesso a experiências de outras mães. 
+
+Através de relatos de mães/pais/responsáveis interessados em temas sobre crianças e ter acesso a experiências de outras mães. 
 * Que problemas seu produto resolve para estes usuários
-- Mais segurança na hora de realizar algo relacionado a crianças, por ter outras experiências compartilhadas.
+
+Mais segurança na hora de realizar algo relacionado a crianças, por ter outras experiências compartilhadas.
 * Quais são os objetivos destes usuários com relação ao produto
-- Além de compartilhar as suas experiências e dúvidas, ter acesso a casos similares e mães/pais/responsáveis com interesses em comum.
+
+Além de compartilhar as suas experiências e dúvidas, ter acesso a casos similares e mães/pais/responsáveis com interesses em comum.
 * Quais são as principais funcionalidades do produto
-- Mães/pais/responsáveis compartilhando e adquirindo novas informações sobre temas relacionados a suas crianças.
+
+Mães/pais/responsáveis compartilhando e adquirindo novas informações sobre temas relacionados a suas crianças.
 * Como conferiu se o produto está funcionando para resolver os problemas
-- Através de testes de usabilidade com protótipo e pesquisa com possíveis usuários:
-Protótipo: ![Marvel](https://marvelapp.com/4h44hce)
-Pesquisa com usuários: ![Pesquisa](https://docs.google.com/forms/d/1JEnno5OMQvksqP6-NM_9Lx7e9oSmQNiu8Vb6N_0OM50/edit#responses)
+
+Através de testes de usabilidade com protótipo e pesquisa com possíveis usuários:
+
+Protótipo: [Marvel](https://marvelapp.com/4h44hce)
+
+Pesquisa com usuários: [Link da pesquisa](https://docs.google.com/forms/d/1JEnno5OMQvksqP6-NM_9Lx7e9oSmQNiu8Vb6N_0OM50/edit#responses)
 * Como irá garantir que os usuários utilizem este produto
-- Apresentando as vantagens e diferenças que ele pode trazer para os usuários
+
+Apresentando as vantagens e diferenças que ele pode trazer para os usuários
 
 Para poder chegar a estas definições, recomendamos que relembre os seguintes tópicos de UX: entrevistas com usuários e testes de usabilidade.
 
@@ -98,7 +107,7 @@ Uma vez que entenda as necessidades de seu usuário, escreva as Histórias de Us
 ### Design da interface de usuário (protótipo de baixa fidelidade)
 
 Você deve definir qual será o fluxo que o usuário seguirá dentro de seu produto, e a partir disso desenhar uma interface do usuário (UI) que siga este fluxo em sua rede social. Este design deverá representar a solução que será finalmente implementada em seu código.
-- Primeiro protótipo: ![Marvel](https://marvelapp.com/4h44hce)
+- Primeiro protótipo: [Marvel](https://marvelapp.com/4h44hce)
 
 ### Responsividade
 
@@ -208,7 +217,7 @@ O código do projeto deverá estar disponível no github, e a interface publicad
 
 ## Avaliação
 
-###Tech
+### Tech
 
 - Habilidade
 - JavaScript
@@ -250,45 +259,45 @@ Nos projetos anteriores consumimos (lemos) dados, mas não escrevemos dados (sal
 
 ### Geral
 
- * [] O produto final segue o que foi especificado no desenho.
+ * [ ] O produto final segue o que foi especificado no desenho.
 
 ### README.md
 
- * [] Definição do produto
- * [] Resumo das entrevistas com usuários
- * [] Link/imagens dos protótipos de baixa fidelidade
- * [] Conclusões dos testes de usuário feitos no HTML
+ * [ ] Definição do produto
+ * [ ] Resumo das entrevistas com usuários
+ * [ ] Link/imagens dos protótipos de baixa fidelidade
+ * [ ] Conclusões dos testes de usuário feitos no HTML
 
 ### Criação de conta (sign up)
 
- * [] Permite criar conta.
- * [] Valida email.
- * [] Valida senha.
- * [] Mostra mensagens de erro.
+ * [ ] Permite criar conta.
+ * [ ] Valida email.
+ * [ ] Valida senha.
+ * [ ] Mostra mensagens de erro.
 
 ### Início de sessão (sign in)
 
- * [] Permite iniciar sessão.
- * [] Valida email.
- * [] Valida senha.
- * [] Mostra mensagens de erro.
+ * [ ] Permite iniciar sessão.
+ * [ ] Valida email.
+ * [ ] Valida senha.
+ * [ ] Mostra mensagens de erro.
 
 ### Timeline
 
- * [] Mostra a timeline.
- * [] Permite fazer novas publicações.
- * [] Permite apagar publicações.
- * [] Pede confirmação antes de apagar publicações.
- * [] Permite editar publicação no mesmo lugar (in place).
- * [] Permite filtrar publicações por público/privado.
- * [] Permite marcar publicações como gostei (like, coração, estrela, etc).
- * [] Permite ver quantos likes, estrelas, corações (ou o que for utilizar) uma publicação recebeu.
+ * [ ] Mostra a timeline.
+ * [ ] Permite fazer novas publicações.
+ * [ ] Permite apagar publicações.
+ * [ ] Pede confirmação antes de apagar publicações.
+ * [ ] Permite editar publicação no mesmo lugar (in place).
+ * [ ] Permite filtrar publicações por público/privado.
+ * [ ] Permite marcar publicações como gostei (like, coração, estrela, etc).
+ * [ ] Permite ver quantos likes, estrelas, corações (ou o que for utilizar) uma publicação recebeu.
 
 ### Hacker Edition
 
- * [] Permite adicionar amigos.
- * [] Permite deletar amigos.
- * [] Permite compartilhamento de publicações.
- * [] Permite comentar ou responder uma publicação.
- * [] Permite editar perfil.
- * [] Permite ver perfil ou timeline.
+ * [ ] Permite adicionar amigos.
+ * [ ] Permite deletar amigos.
+ * [ ] Permite compartilhamento de publicações.
+ * [ ] Permite comentar ou responder uma publicação.
+ * [ ] Permite editar perfil.
+ * [ ] Permite ver perfil ou timeline.

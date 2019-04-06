@@ -1,19 +1,35 @@
     let database = firebase.database();
     let USER_ID = window.location.search.match(/\?id=(.*)/)[1]
-
+    let storage = firebase.storage().ref("photos")
     $(document).ready(function() {
         database.ref("tasks/" + USER_ID).once('value')
             .then(function(snapshot) {
                 snapshot.forEach(function(childSnapshot) {
                     let childKey = childSnapshot.key;
-                    //console.log(childKey)
                     let childData = childSnapshot.val();
-                    //console.log(childData)
                     creatPost(childData.text, childData.likes, childData.filter, childData.date, childKey)
                 });
             })
 
-        $('#public').keydown(disableBtn)
+        database.ref("users/" + USER_ID).once('value')
+            .then(function(snapshot) {
+                snapshot.forEach(function(childSnapshot) {
+                    let childKey = childSnapshot.key;
+                    let childData = childSnapshot.val();
+
+                    if (childData.photo === "") {
+                        $("#photo").attr("src", "imagem/perfil.png");
+                    } else {
+                        storage.child(USER_ID).getDownloadURL().then(url => {
+                            $("#photo").attr("src", url)
+                        })
+                    }
+                    namePost(childData.name, childData.photo)
+                });
+            })
+
+
+        $('#public').keyup(disableBtn)
 
         $("#btnpost").click(newPost)
 
@@ -26,28 +42,84 @@
 
     })
 
+
+    function namePost(name, photo) {
+        $("#post").prepend(`
+        <div class="row align-items-center">
+  <div class="col-xs-3">
+        <img src=${photo} class="img-responsive img-circle" id="photo" alt=${name}></img>
+        </div>
+        <div class="col-xs-9 align-items-end">
+        <p class="text text-left name">${name}</p>
+        </div>
+        </div>
+`)
+    }
+    console.log(namePost)
+
     function creatPost(post, likes, filterPost, datePost, key) {
         $("#post-total").prepend(`
     <li>
-    <p class="list-group-item filter" data-text-id=${key}>${post}</p>
-    <p class="list-group-item filter" data-date-id=${key}>${datePost}</p>
-    <p class="list-group-item filter" data-filter-id=${key}>Post ${filterPost}</p>
-    <button type="button" class="btn btn-primary edit" data-edit-id=${key} data-toggle="modal" data-target="#myModal">Editar</button>
-    <button type="button" class="btn btn-primary" data-delete-id=${key} data-toggle="modal" data-target="#myModal-delete">Deletar</button>
-    <input type="button" class="btn btn-primary" data-like-id=${key} value="Curtir" /><span class="btn" data-like-id=${key} id="likes" >${likes}</span>
-    </li>`);
+    <div id="post" data-total-id=${key} class="list-group-item well">
+    <div class="row align-items-end">
+    <div class="col-xs-3">
+    <p id="post" class="text-muted text-min text-center" data-date-id=${key}>${datePost}</p>
+    </div>
+    </div>
+    <p class="text-center text" data-text-id=${key}>${post}</p>
+    <p class="text-min" data-filter-id=${key}>Post ${filterPost}</p>
+    
+    </div>
+    <button type="button" class="btn btn-primary edit" data-edit-id=${key} data-toggle="modal" data-target="#myModal"><i class="far fa-edit"></i></button>
+    <button type="button" class="btn btn-primary " data-delete-id=${key} data-toggle="modal" data-target="#myModal-delete"><i class="far fa-trash-alt"></i></button>
+    
+    <button type="button" class="btn btn-primary" data-like-id=${key}><i class="far fa-thumbs-up"></i> <span data-like-id=${key} id="likes">${likes}</span> </button>
+    </li>
+    `);
 
         let count = 0;
-        $(`input[data-like-id=${key}]`).click(function(event) {
+        $(`button[data-like-id=${key}]`).click(function(event) {
             event.preventDefault();
             count += 1;
             let newLike = parseInt($(`span[data-like-id=${key}]`).text()) + 1
             $(`span[data-like-id=${key}]`).text(newLike)
-                //console.log(newLike)
             database.ref("tasks/" + USER_ID + "/" + key).update({
                 likes: newLike
             })
         })
+
+        // $(`button[data-comment-id=${key}]`).click(function(event) {
+        //     event.preventDefault();
+        //     let comments = $("#text-comment").val()
+        //     $("#myModal-comment").html(`
+        //     <div class="modal-dialog">
+        //     <div class="modal-content">
+
+        //         <div class="modal-header">
+        //             <h4 class="modal-title">Faça seu comentário</h4>
+        //             <button type="button" class="close" data-dismiss="modal">×</button>
+        //         </div>
+
+        //         <div class="modal-body">
+        //             <div class="form-group" >
+        //             <ul id="comment-new">
+        //             </ul>
+        //             <input class="form-control" id="text-comment" />
+        //             </div>
+        //         </div>
+
+        //         <div class="modal-footer">
+        //             <button type="button" id="btn-comment" class="btn btn-primary" data-dismiss="modal">OK</button>
+        //         </div>
+
+        //     </div>
+        // </div>
+        //     `)
+        //     $("#comment-new").prepend(`
+        //             <li>${comments}</li>
+        //             `)
+        // });
+
 
         $(`button[data-delete-id=${key}]`).click(function(event) {
             event.preventDefault();
@@ -73,7 +145,7 @@
 
                 <div class="modal-body">
                     <div class="form-group">
-                    <input class="form-control" rows="5" id="text-edit" value=${oldText} />
+                    <textarea class="form-control" id="text-edit">${oldText}</textarea>
                     </div>
                 </div>
 
@@ -98,8 +170,9 @@
         });
     }
 
+
     function disableBtn() {
-        if ($('#public').val().length === 0) {
+        if ($('#public').val().length <= 0) {
             $('#btnpost').prop("disabled", true)
         } else {
             $('#btnpost').prop("disabled", false)
@@ -117,19 +190,22 @@
             likes: 0,
             filter: selectPost,
             date: time()
-        });
+        })
         creatPost(post, postLikes, selectPost, datePost, newPost.key)
         $('#btnpost').prop("disabled", true)
         $('form')[0].reset()
     }
 
+
+
     function signUp(event) {
         event.preventDefault();
-        firebase.auth().signOut().then(function() {
-            window.location = "autenticacao.html"
-        }).catch(function(error) {
-            // An error happened.
-        })
+        firebase.auth().signOut()
+            .then(function() {
+                window.location = "autenticacao.html"
+            }).catch(function(error) {
+                // An error happened.
+            })
     }
 
     function time() {

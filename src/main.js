@@ -14,7 +14,8 @@
                         snapshot.forEach(function(childSnapshot) {
                             let childKeyComment = childSnapshot.key;
                             let childDataComment = childSnapshot.val();
-                            newComment(childDataComment.comment)
+                            console.log(childDataComment.comment, childKey)
+                            newComment(childDataComment.comment, childKey)
                         });
                     });
                 });
@@ -76,7 +77,7 @@
     </div>
     <p class="text-center text" data-text-id=${key}>${post}</p>
     <p class="text-min" data-filter-id=${key}>Post ${filterPost}</p>
-    <textarea class="form-control" id="text-comment" placeholder="Faça seu comentário"></textarea>
+    <textarea class="form-control" id="text-comment" data-comment-id=${key} placeholder="Faça seu comentário"></textarea>
     
     <button type="button" class="btn btn-primary" id="btn-comment" data-comment-text-id=${key}>OK</button>
     </div>
@@ -99,9 +100,9 @@
         })
 
 
-        $("#btn-comment").click(function(event) {
+        $(`button[data-comment-text-id=${key}]`).click(function(event) {
             event.preventDefault();
-            let comments = $("#text-comment").val()
+            let comments = $(`textarea[data-comment-id=${key}]`).val()
             $('form')[1].reset()
             let commentPost = database.ref("tasks/" + USER_ID + "/" + key + "/" + "comments").push({
                 comment: comments
@@ -110,12 +111,15 @@
 
             $(`button[data-comment-id=${key}]`).click(function(event) {
                 event.preventDefault();
-                newComment(comments)
+                newComment(comments, key)
+                console.log(key)
                     // let comments = $("#text-comment").val()
                     // if (comments === undefined) {
                     //     comments = ""
                     // }
-
+                $("#modal-comment").html(`
+                <ul class="list-group" id="comment-new" data-comment-id=${key}></ul>
+                `)
 
             })
         })
@@ -170,11 +174,16 @@
         });
     }
 
-    function newComment(comment) {
+    function newComment(comment, key) {
+        console.log(key, comment)
         $("#comment-new").prepend(`
-        <li>
-        ${comment}
-        </li>
+        <div class="list-group-item well">
+        <div class="row align-items-end">
+    <div class="col-xs-12">
+        <p class="text" data-comment-id=${key}>${comment}</p>
+        </div>
+        </div>
+        </div>
       `)
     }
 

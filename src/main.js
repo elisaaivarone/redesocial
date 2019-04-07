@@ -7,8 +7,16 @@
                 snapshot.forEach(function(childSnapshot) {
                     let childKey = childSnapshot.key;
                     let childData = childSnapshot.val();
-
                     creatPost(childData.text, childData.likes, childData.filter, childData.date, childKey)
+
+                    let commentsRef = database.ref("tasks/" + USER_ID + "/" + childKey + "/" + "comments/")
+                    commentsRef.once('value', function(snapshot) {
+                        snapshot.forEach(function(childSnapshot) {
+                            let childKeyComment = childSnapshot.key;
+                            let childDataComment = childSnapshot.val();
+                            newComment(childDataComment.comment)
+                        });
+                    });
                 });
             })
 
@@ -30,6 +38,7 @@
             })
 
 
+
         $('#public').keyup(disableBtn)
 
         $("#btnpost").on("click", newPost)
@@ -40,7 +49,6 @@
             event.preventDefault();
             window.location = 'perfil.html?id=' + USER_ID;
         })
-
     })
 
 
@@ -69,6 +77,7 @@
     <p class="text-center text" data-text-id=${key}>${post}</p>
     <p class="text-min" data-filter-id=${key}>Post ${filterPost}</p>
     <textarea class="form-control" id="text-comment" placeholder="Faça seu comentário"></textarea>
+    
     <button type="button" class="btn btn-primary" id="btn-comment" data-comment-text-id=${key}>OK</button>
     </div>
     <button type="button" class="btn btn-primary edit" data-edit-id=${key} data-toggle="modal" data-target="#myModal"><i class="far fa-edit"></i></button>
@@ -89,57 +98,27 @@
             })
         })
 
-        $(`button[data-comment-id=${key}]`).click(function(event) {
-            event.preventDefault();
-            let comments = $("#text-comment").val()
-            if (comments === undefined) {
-                comments = ""
-            }
-            $("#myModal-comment").html(`
-            <div class="modal-dialog">
-            <div class="modal-content">
-
-                <div class="modal-header">
-                    <h4 class="modal-title">Comentários</h4>
-                    <button type="button" class="close" data-dismiss="modal">×</button>
-                </div>
-
-                <div class="modal-body">
-                    <div class="form-group" >
-                    <ul class="list-group" id="comment-new">
-                    </ul>
-
-                    </div>
-                </div>
-
-                <div class="modal-footer">
-                    
-                </div>
-
-            </div>
-        </div>
-            `)
-            $("#comment-new").prepend(`
-              <li>
-              teste
-              </li>
-            `)
-        })
-
 
         $("#btn-comment").click(function(event) {
             event.preventDefault();
             let comments = $("#text-comment").val()
             $('form')[1].reset()
-            database.ref("tasks/" + USER_ID + "/" + key + "/" + "comments").push({
-                    comment: comments
-                })
-                // $('#btn-comment').prop("disabled", true)
+            let commentPost = database.ref("tasks/" + USER_ID + "/" + key + "/" + "comments").push({
+                comment: comments
+            })
 
+
+            $(`button[data-comment-id=${key}]`).click(function(event) {
+                event.preventDefault();
+                newComment(comments)
+                    // let comments = $("#text-comment").val()
+                    // if (comments === undefined) {
+                    //     comments = ""
+                    // }
+
+
+            })
         })
-
-
-
 
 
         $(`button[data-delete-id=${key}]`).click(function(event) {
@@ -191,6 +170,13 @@
         });
     }
 
+    function newComment(comment) {
+        $("#comment-new").prepend(`
+        <li>
+        ${comment}
+        </li>
+      `)
+    }
 
     function disableBtn() {
         if ($('#public').val().length <= 0) {

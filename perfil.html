@@ -25,6 +25,36 @@
 </head>
 
 <body>
+    <nav class="navbar navbar-inverse nav-timeline">
+        <div class="container-fluid">
+            <img id="img-timeline" class="img-responsive" src="imagem/logotipo.jpeg">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+                <a id="text-timeline" class="navbar-brand">Kids Life</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right menu-style">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="active"><a href="perfil.html" id="perfil">Perfil</a></li>     
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Filtrar posts<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Público</a></li>
+                            <li><a href="#">Privado</a></li>
+                            <li><a href="#">Amigos</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="autenticacao.html" id="signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                </ul>
+                
+            </div>
+        </div>
+    </nav>
+    <section>
   <h1>Meu Perfil</h1>
 
   <img src="" id="perfil" width=150px>
@@ -61,7 +91,7 @@
 
   <button id="edit" class="btn btn-primary" disabled>Editar</button>
   <button id="back" class="btn btn-primary" disabled>Voltar</button>
-
+</section>
   <script src="http://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>

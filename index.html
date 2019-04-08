@@ -49,21 +49,12 @@
                             <li><a href="#">Privado</a></li>
                             <li><a href="#">Amigos</a></li>
                         </ul>
-                    </li>
-                    <li><a href="autenticacao.html" id="signout"><span class="glyphicon glyphicon-user"></span> Sign
-                            Out</a></li>
+                      <ul class="nav navbar-nav navbar-right">
+                         <li><a href="autenticacao.html" id="signout"><span class="glyphicon glyphicon-user"></span> Sign Out</a></li>
                 </ul>
-
-            </div>
+       </div>
         </div>
     </nav>
-    <div class="container-fluid">
-        <div class="row content">
-            <div class="col-sm-3 sidenav">
-                <p><a href="#">Link</a></p>
-                <p><a href="#">Link</a></p>
-                <p><a href="#">Link</a></p>
-            </div>
             <form class="container">
                 <div class="txtarea col-md-6">
                     <div class="form-group">
@@ -93,11 +84,28 @@
             </div>
 
             <div class="container mt-3">
+              
+        <!-- The Modal comment -->
+        <div class="modal fade" id="myModal-comment">
+            <div class="modal-dialog">
+                <div class="modal-content">
 
-                <!-- The Modal comment -->
-                <div class="modal fade" id="myModal-comment">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Comentários</h4>
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                    </div>
+                    <div class="modal-body" id="modal-comment">
+                        <ul class="list-group" id="comment-new" data-comment-id=${key}></ul>
+                    </div>
+
+
+                    <div class="modal-footer">
+
+                    </div>
 
                 </div>
+            </div>
+              </div>
 
             </div>
 

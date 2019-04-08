@@ -1,8 +1,8 @@
 //Login e-mail e senha
-$(document).ready(function() {
+$(document).ready(function () {
     let database = firebase.database();
 
-    $("#createLogin").click(function(event) {
+    $("#createLogin").click(function (event) {
         event.preventDefault();
 
         let email = $("#inputemaill").val();
@@ -13,20 +13,21 @@ $(document).ready(function() {
         let state = $("#inputState").val();
 
         firebase.auth().createUserWithEmailAndPassword(email, password)
-            .then(function(response) {
+            .then(function (response) {
                 window.location = 'index.html?id=' + response.user.uid;
                 database.ref("users/" + response.user.uid).push({
                     name: name,
-                    photo: "",
+                    photo: "imagem/perfil.png",
                     years: "",
                     city: city,
                     state: state,
                     status: "",
                     kids: kids,
-                    about: ""
+                    about: "",
+                    email: email
                 });
             })
-            .catch(function(error) {
+            .catch(function (error) {
                 let errorCode = error.code;
                 let errorMessage = error.message;
                 alert(errorMessage);
@@ -34,7 +35,7 @@ $(document).ready(function() {
     })
 
     //Login com Gmail    
-    $("#authGmail").click(function(event) {
+    $("#authGmail").click(function (event) {
         event.preventDefault();
 
         let email = $("#inputemaill").val();
@@ -46,22 +47,23 @@ $(document).ready(function() {
 
         let provider = new firebase.auth.GoogleAuthProvider();
         firebase.auth().signInWithPopup(provider)
-            .then(function(result) {
+            .then(function (result) {
                 let token = result.credential.acessToken;
                 let user = result.user;
                 window.location = 'index.html?id=' + result.user.uid;
                 database.ref("users/" + result.user.uid).push({
                     name: name,
-                    photo: "",
+                    photo: "imagem/perfil.png",
                     years: "",
                     city: city,
                     state: state,
                     status: "",
                     kids: kids,
-                    about: ""
+                    about: "",
+                    email: email
                 });
             })
-            .catch(function(error) {
+            .catch(function (error) {
                 let errorCode = error.code;
                 let errorMessage = error.message;
                 let email = error.email;
@@ -71,7 +73,7 @@ $(document).ready(function() {
     })
 
     //Login com Facebook
-    $("#authFace").click(function(event) {
+    $("#authFace").click(function (event) {
         event.preventDefault();
 
         let email = $("#inputemaill").val();
@@ -83,23 +85,23 @@ $(document).ready(function() {
 
         let provider = new firebase.auth.FacebookAuthProvider();
         firebase.auth().signInWithPopup(provider)
-            .then(function(result) {
+            .then(function (result) {
                 let token = result.credential.acessToken;
                 let user = result.user;
                 window.location = 'index.html?id=' + result.user.uid;
                 database.ref("users/" + result.user.uid).push({
                     name: name,
-                    photo: "",
+                    photo: "imagem/perfil.png",
                     years: "",
                     city: city,
                     state: state,
                     status: "",
                     kids: kids,
-                    about: ""
+                    about: "",
+                    email: email
                 });
             })
-            .catch(function(error) {
-                console.log(error);
+            .catch(function (error) {
                 let errorCode = error.code;
                 let errorMessage = error.message;
                 let email = error.email;

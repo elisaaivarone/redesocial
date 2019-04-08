@@ -25,73 +25,93 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-inverse nav-timeline">
-        <div class="container-fluid">
-            <img id="img-timeline" class="img-responsive" src="imagem/logotipo.jpeg">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+
+  <nav class="navbar navbar-inverse nav-timeline">
+    <div class="container-fluid">
+      <img id="img-timeline" class="img-responsive" src="imagem/logotipo.jpeg">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-                <a id="text-timeline" class="navbar-brand">Kids Life</a>
+        <a id="text-timeline" class="navbar-brand">Kids Life</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-right menu-style">
+          <li><a href="#" id="home">Home</a></li>
+          <li class="active"><a href="#">Perfil</a></li>
+          <li><a href="autenticacao.html" id="signout"><span class="glyphicon glyphicon-user"></span> Sign Out</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 ">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4>Meu Perfil</h4>
             </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav navbar-right menu-style">
-                    <li><a href="index.html">Home</a></li>
-                    <li class="active"><a href="perfil.html" id="perfil">Perfil</a></li>     
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Filtrar posts<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Público</a></li>
-                            <li><a href="#">Privado</a></li>
-                            <li><a href="#">Amigos</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="autenticacao.html" id="signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                </ul>
-                
+            <div class="panel-body">
+              <div class="box box-info">
+                <div class="box-body">
+                  <div class="col-sm-4">
+                    <div>
+                      <img alt="User Pic" id="perfil" class="img-circle img-responsive">
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <h2 style="color:#00b1b1;"><span id="name"></span></h2>
+                    <span>
+                      <p><i class="fas fa-book-reader"></i> Sobre mim:</p>
+                      <p id="about"></p>
+                    </span>
+                  </div>
+                  <div class="clearfix"></div>
+                  <hr style="margin:5px 0 5px 0;">
+
+                  <div class="col-sm-4 col-xs-6 tital"><i class="glyphicon glyphicon-briefcase"></i> Idade:</div>
+                  <div class="col-sm-4"><span id="years"></span></div>
+                  <div class="clearfix"></div>
+                  <div class="bot-border"></div>
+
+                  <div class="col-sm-4 col-xs-6 tital"><i class="glyphicon glyphicon-home"></i> Cidade:</div>
+                  <div class="col-sm-4"><span id="city"></span></div>
+                  <div class="clearfix"></div>
+                  <div class="bot-border"></div>
+
+                  <div class="col-sm-4 col-xs-6 tital"><i class="glyphicon glyphicon-map-marker"></i> Estado:</div>
+                  <div class="col-sm-4"><span id="state"></span></div>
+                  <div class="clearfix"></div>
+                  <div class="bot-border"></div>
+
+                  <div class="col-sm-4 col-xs-6 tital"><i class="fas fa-child"></i> Filho(s):</div>
+                  <div class="col-sm-4"><span id="kids"></span></div>
+                  <div class="clearfix"></div>
+                  <div class="bot-border"></div>
+
+                  <div class="col-sm-4 col-xs-6 tital"><i class="fas fa-heart"></i> Civil:</div>
+                  <div class="col-sm-4"><span id="status"></span></div>
+                  <div class="clearfix"></div>
+                  <div class="bot-border"></div>
+
+                  <div class="col-sm-4 col-xs-6 tital"><i class="glyphicon glyphicon-envelope"></i> E-mail:</div>
+                  <div class="col-sm-4"><span id="email"></span></div>
+                  <div class="clearfix"></div>
+                  <div class="bot-border"></div>
+
+                  <button id="edit" class="btn btn-primary" disabled>Editar</button>
+                  <button id="back" class="btn btn-danger" disabled>Voltar</button>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
-    </nav>
-    <section>
-  <h1>Meu Perfil</h1>
-
-  <img src="" id="perfil" width=150px>
-  <table>
-    <tr>
-      <th>Nome:</th>
-      <td id="name"></td>
-    </tr>
-    <tr>
-      <th>Idade:</th>
-      <td id="years"></td>
-    </tr>
-    <tr>
-      <th>Cidade:</th>
-      <td id="city"></td>
-    </tr>
-    <tr>
-      <th>Estado:<i class="fas fa-map-marker-alt"></i></th>
-      <td id="state"></td>
-    </tr>
-    <tr>
-      <th>Status Civil:</th>
-      <td id="status"></td>
-    </tr>
-    <tr>
-      <th>Filho(s):</th>
-      <td id="kids"></td>
-    </tr>
-    <tr>
-      <th>Sobre mim:</th>
-      <td id="about"></td>
-    </tr>
-  </table>
-
-  <button id="edit" class="btn btn-primary" disabled>Editar</button>
-  <button id="back" class="btn btn-primary" disabled>Voltar</button>
-</section>
+      </div>
+    </div>
+  </section>
   <script src="http://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>

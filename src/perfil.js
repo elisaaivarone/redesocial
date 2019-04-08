@@ -7,9 +7,8 @@ $(document).ready(function (response) {
     .then(function (snapshot) {
       snapshot.forEach(function (childSnapshot) {
         let childData = childSnapshot.val();
-        console.log(childData.name)
 
-        if (childData.photo === "") {
+        if (childData.photo === "imagem/perfil.png") {
           $("#perfil").attr("src", "imagem/perfil.png");
         }
         else {
@@ -25,6 +24,7 @@ $(document).ready(function (response) {
         $("#status").text(childData.status);
         $("#kids").text(childData.kids);
         $("#about").text(childData.about);
+        $("#email").text(childData.email);
       })
 
       $("#edit").prop("disabled", false)
@@ -41,6 +41,10 @@ $(document).ready(function (response) {
   });
 
   $("#back").click(function () {
+    window.location = 'index.html?id=' + USER_ID;
+  });
+
+  $("#home").click(function () {
     window.location = 'index.html?id=' + USER_ID;
   });
 

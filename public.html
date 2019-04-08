@@ -37,44 +37,25 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right menu-style">
-                    <li class="active"><a href="#">Home</a></li>
+                    <li class="active"><a href="#" id="home">Home</a></li>
                     <li><a href="#" id="perfil">Perfil</a></li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Filtrar posts<span
                                 class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="#" id="filter-public">Público</a></li>
-                            <li><a href="#" id="filter-private">Privado</a></li>
-                            <li><a href="#" id="filter-friends">Amigos</a></li>
+                            <li><a href="#">Privado</a></li>
+                            <li><a href="#">Amigos</a></li>
                         </ul>
                         <li><a href="autenticacao.html" id="signout"><span class="glyphicon glyphicon-user"></span> Sign Out</a></li>
-                    </li>
             </div>
         </div>
     </nav>
-    <form class="container">
-        <div class="txtarea col-md-6">
-            <div class="form-group">
-                <label for="comment"></label>
-                <textarea class="form-control text" rows="5" id="public" placeholder="Tire suas dúvidas ou compartilhe a sua experiência"></textarea>
-                <button type="button" class="btn btn-primary" id="btnpost" disabled>Publicar</button>
-                <select class="btn" id="select-post">
-                            <option class="public-select">Público</option>
-                            <option class="private-select">Privado</option>
-                            <option class="friends-select">Amigos</option>
-                        </select>
-            </div>
-        </div>
-    </form>
-    <form class="container">
-        <section class="list-group col-md-6" id="post-total">
-        </section>
-    </form>
-    <form class="container">
-        <section class="list-group col-md-6" id="post-total-filter">
-        </section>
-    </form>
 
+    <form class="container">
+        <section class="list-group col-md-6" id="post-total-public">
+        </section>
+    </form>
     <div class="container mt-3">
 
         <!-- The Modal edit -->
@@ -139,7 +120,7 @@
     </div>
     <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <script src="src/main.js"></script>
+    <script src="src/public.js"></script>
 </body>
 
 </html>

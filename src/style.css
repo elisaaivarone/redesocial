@@ -19,6 +19,11 @@
     .menu-style{
         color: #DB9B79 !important;
     }
+    .perfil {
+        display: flex;
+        flex-direction: column;
+        background-color:#FFE16F;
+    }
     #text-timeline {
         color: #DB9B79;
     }
@@ -91,10 +96,15 @@
         padding-top: 10%;
     }
     
-    @media screen and (max-width:600px) {
+    @media screen and (max-width:700px) {
         #img-timeline, #img-logo {
          width: 100%;
         }
+        .form-group {
+        box-shadow: none; 
+        width: 350px;
+        }
+        
     }
     
     @media screen and (max-width:1200px) {

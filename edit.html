@@ -24,47 +24,97 @@
 </head>
 
 <body>
-  <h1>Minhas informações:</h1>
 
-  <img src="" id="perfil" width=150px>
-  <input type="file" id="photo">
-  <table>
-    <tr>
-      <th>Nome:</th>
-      <td><input type=text id=name></td>
-    </tr>
-    <tr>
-      <th>Idade:</th>
-      <td><input type=number id=years></td>
-    </tr>
-    <tr>
-      <th>Cidade:</th>
-      <td><input type=text id=city></td>
-    </tr>
-    <tr>
-      <th>Estado:</th>
-      <td><input type=text id=state></td>
-    </tr>
-    <tr>
-      <th>Status Civil:</th>
-      <td><input type=text id=status></td>
-    </tr>
-    <tr>
-      <th>Quantos filhos?</th>
-      <td><input type=number id=kids></td>
-    </tr>
-    <tr>
-      <th>Sobre mim:</th>
-      <td><textarea id=about></textarea></td>
-    </tr>
-  </table>
-  <button id="save" class="btn btn-primary" disabled>Salvar</button>
-  <button id="back" class="btn btn-primary" disabled>Voltar</button>
+  <nav class="navbar navbar-inverse nav-timeline">
+    <div class="container-fluid">
+      <img id="img-timeline" class="img-responsive" src="imagem/logotipo.jpeg">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a id="text-timeline" class="navbar-brand">Kids Life</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-right menu-style">
+          <li><a href="#" id="home">Home</a></li>
+          <li><a href="#" id="profile">Perfil</a></li>
+          <li class="active"><a href="#">Editar perfil</a></li>
+          <li><a href="autenticacao.html" id="signout"><span class="glyphicon glyphicon-user"></span> Sign Out</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <section>
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 ">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4>Meu Perfil</h4>
+              </div>
+              <div class="panel-body">
+                <div class="box box-info">
+                  <div class="box-body">
+                    <div class="col-sm-4">
+                      <div>
+                        <img alt="User Pic" id="perfil" class="img-circle img-responsive">
+                        <input type="file" id="photo">
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <h2 style="color:#00b1b1;">
+                        <input type="text" class="form-control" id="name">
+                      </h2>
+                      <span>
+                        <p><i class="fas fa-book-reader"></i> Sobre mim:</p>
+                        <textarea class="form-control" id="about"></textarea>
+                      </span>
+                    </div>
+                    <div class="clearfix"></div>
+                    <hr style="margin:5px 0 5px 0;">
 
-  <script src="http://code.jquery.com/jquery-3.3.1.min.js"
-    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  <script src="src/edit.js"></script>
+                    <div class="col-sm-4 col-xs-6 tital"><i class="glyphicon glyphicon-briefcase"></i> Idade:</div>
+                    <div class="col-sm-3"><input type="number" class="form-control" id="years"></div>
+                    <div class="clearfix"></div>
+                    <div class="bot-border"></div>
+
+                    <div class="col-sm-4 col-xs-6 tital"><i class="glyphicon glyphicon-home"></i> Cidade:</div>
+                    <div class="col-sm-6"><input type="text" class="form-control" id="city"></div>
+                    <div class="clearfix"></div>
+                    <div class="bot-border"></div>
+
+                    <div class="col-sm-4 col-xs-6 tital"><i class="glyphicon glyphicon-map-marker"></i> Estado:</div>
+                    <div class="col-sm-6"><input type="text" class="form-control" id="state"></div>
+                    <div class="clearfix"></div>
+                    <div class="bot-border"></div>
+
+                    <div class="col-sm-4 col-xs-6 tital"><i class="fas fa-child"></i> Filho(s):</div>
+                    <div class="col-sm-3"><input type="number" class="form-control" id="kids"></div>
+                    <div class="clearfix"></div>
+                    <div class="bot-border"></div>
+
+                    <div class="col-sm-4 col-xs-6 tital"><i class="fas fa-heart"></i> Civil:</div>
+                    <div class="col-sm-6"><input type="text" class="form-control" id="status"></div>
+                    <div class="clearfix"></div>
+                    <div class="bot-border"></div>
+
+                    <button id="save" class="btn btn-primary" disabled>Salvar</button>
+                    <button id="back" class="btn btn-danger" disabled>Voltar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="src/edit.js"></script>
 </body>
 
 </html>

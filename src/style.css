@@ -1,12 +1,27 @@
-    /*.btn-special-color {
-    background-color: pink;
-}*/
+
     
     body {
         background: url(fundo.jpg) no-repeat center fixed transparent;
         width: 100%;
     }
-    
+    #img-logo{
+        width: 35%;
+    }
+    #img-timeline {
+        width: 30%;
+        height: 150px;
+        margin-left: -15px;
+    }
+    .nav-timeline {
+        position: fixed;
+        background-color:#3B414D !important;
+    }
+    .menu-style{
+        color: #DB9B79 !important;
+    }
+    #text-timeline {
+        color: #DB9B79;
+    }
     .container {
         display: flex;
         justify-content: center;
@@ -17,16 +32,7 @@
         border: none;
         margin-top: 5px;
     }
-    
-    .logo {
-        display: flex;
-        align-items: center;
-        border-radius: 50%;
-        width: 40%;
-        margin: auto;
-        padding: 20px;
-    }
-    
+        
     .form-group {
         box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.418);
         padding: 25px 40px;
@@ -38,21 +44,12 @@
         font-family: 'Roboto Slab', serif;
         font-size: 18px;
     }
-    /* .nav {
-        background: url(fundo.jpg);
-        margin-top: 20px;
-        box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.418);
-    } */
     
     .title-signup {
         display: inline-flex;
         margin-left: 40px;
         padding: 20px;
     }
-    /* .navbar-right {
-        margin-right: 20px;
-        padding: 20px;
-    } */
     
     .list-group-item {
         word-wrap: break-word;
@@ -69,7 +66,7 @@
     }
     
     .img-responsive {
-        display: block;
+
         width: 100%;
     }
     
@@ -94,16 +91,16 @@
         padding-top: 10%;
     }
     
-    @media screen and (min-width:1200px) {
-        #img-timeline {
-            display: none;
+    @media screen and (max-width:600px) {
+        #img-timeline, #img-logo {
+         width: 100%;
         }
     }
     
     @media screen and (max-width:1200px) {
         #text-timeline {
-            display: none;
-        }
+    }
+
         .like {
             border: none;
             width: 15%;

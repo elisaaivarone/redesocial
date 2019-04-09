@@ -23,17 +23,18 @@
 </head>
 
 <body>
-
-    <nav class="navbar navbar-inverse nav-timeline">
+    <header class="container-fluid nav-logo">
+        <img id="img-timeline" class="img-responsive" src="imagem/logotipo.jpeg">
+    </header>
+    <nav class="navbar navbar-inverse nav-timeline" data-spy="affix" data-offset-top="197">
         <div class="container-fluid">
-            <img id="img-timeline" class="img-responsive" src="imagem/logotipo.jpeg">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a id="text-timeline" class="navbar-brand">Kids Life</a>
+                <a id="text-logo" class="navbar-brand">Kids Life</a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right menu-style">
@@ -53,18 +54,18 @@
             </div>
         </div>
     </nav>
-    <aside class="perfil">
+    <!--<aside class="perfil">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-2">
                     <p><a href="#">Link</a></p>
                     <p><a href="#">Link</a></p>
                     <p><a href="#">Link</a></p>
-                </div>
+                </div>-->
     </aside>
     <form class="container">
         <div class="txtarea col-md-6">
-            <div class="form-group">
+            <div class="form-group ">
                 <label for="comment"></label>
                 <textarea class="form-control text" rows="5" id="public" placeholder="Tire suas dúvidas ou compartilhe a sua experiência"></textarea>
                 <button type="button" class="btn btn-primary" id="btnpost" disabled>Publicar</button>
@@ -77,11 +78,11 @@
         </div>
     </form>
     <form class="container" id="container-post-total">
-        <section class="list-group col-md-6" id="post-total">
+        <section class="list-group col-md-7" id="post-total">
         </section>
     </form>
     <form class="container" id="container-post-total-filter">
-        <section class="list-group col-md-6" id="post-total-filter">
+        <section class="list-group col-md-7" id="post-total-filter">
         </section>
     </form>
 

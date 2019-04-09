@@ -1,44 +1,59 @@
 body {
         background: url(fundo.jpg) no-repeat center fixed transparent;
         width: 100%;
+/*navegador*/        
     }
     #img-logo{
         width: 35%;
+        margin-top: 10px;
     }
     #img-timeline {
         width: 30%;
         height: 150px;
         margin-left: -15px;
     }
+    #perfil{
+        width: 50%;
+    }
+    .nav-logo {
+        background-color:#3B414D;
+    }
     .nav-timeline {
-        position: fixed;
-        background-color:#3B414D !important;
+        background-color: #3B414D !important;
+        border-top: none !important;
     }
-    .menu-style{
-        color: #DB9B79 !important;
+    .affix {
+        top: 0;
+        width: 100%;
+        z-index: 9999 !important;
     }
-    .perfil {
+    .affix + .container-fluid {
+        padding-top: 60px;
+    }
+    
+    /*.perfil {
         display: flex;
         flex-direction: column;
         background-color:#FFE16F;
-    }
-    #text-timeline {
+    }*/
+/* Loggin e Cadastro */
+    #text-logo{
         color: #DB9B79;
     }
     .container {
         display: flex;
         justify-content: center;
-        margin-top: 30px;
-    }
+        margin-top: 40px;
+     }
     
-    .form-control {
-        border: none;
-        margin-top: 5px;
+    .input-login{
+       margin-top: 8px;
+       
     }
-        
     .form-group {
         box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.418);
-        padding: 25px 40px;
+        padding: 20px;
+        margin-top: 0%;
     }
     
     .title-login,
@@ -54,11 +69,12 @@ body {
         padding: 20px;
     }
     
+ /* Timeline */   
     .list-group-item {
         word-wrap: break-word;
-        margin: 2% 5% 0% 5%;
+        margin: 2% 4% 0% 4%;
     }
-    
+
     .btn {
         margin-left: 1%;
         margin-top: 2%;
@@ -67,10 +83,6 @@ body {
     .edit {
         margin-left: 5%;
     }
-    
-.img-responsive {
-    width: 100%;
-}
 
 .like {
     outline: none;
@@ -93,15 +105,25 @@ body {
     padding-top: 10%;
 }
 
-@media screen and (max-width:600px) {
+@media screen and (max-width:700px) {
     #img-timeline,
     #img-logo {
         width: 100%;
+    }
+    .form-group {
+        box-shadow: none;
+    }
+    .txtarea {
+        width: 400px;
+    }
+    .list-group {
+        width: 400px;
     }
 }
 
 @media screen and (max-width:1200px) {
     #text-timeline {}
+}
     .like {
         border: none;
         width: 15%;

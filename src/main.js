@@ -39,10 +39,9 @@
                 });
             })
 
-
-
         $("#filter-public").on("click", function(e) {
             e.preventDefault()
+            $("#post-total-filter").empty()
             database.ref("tasks/" + USER_ID).on('child_added', snapshot => {
                 if (snapshot.val().filter === "Público") {
                     filterPost(snapshot.val().text, snapshot.val().likes, snapshot.val().filter, snapshot.val().date, snapshot.key)
@@ -52,8 +51,19 @@
 
         $("#filter-private").on("click", function(e) {
             e.preventDefault()
+            $("#post-total-filter").empty()
             database.ref("tasks/" + USER_ID).on('child_added', snapshot => {
                 if (snapshot.val().filter === "Privado") {
+                    filterPost(snapshot.val().text, snapshot.val().likes, snapshot.val().filter, snapshot.val().date, snapshot.key)
+                }
+            })
+        })
+
+        $("#filter-friends").on("click", function(e) {
+            e.preventDefault()
+            $("#post-total-filter").empty()
+            database.ref("tasks/" + USER_ID).on('child_added', snapshot => {
+                if (snapshot.val().filter === "Amigos") {
                     filterPost(snapshot.val().text, snapshot.val().likes, snapshot.val().filter, snapshot.val().date, snapshot.key)
                 }
             })
@@ -64,6 +74,11 @@
         $("#btnpost").on("click", newPost)
 
         $("#signout").click(signOut)
+
+        $("#home").click(function(event) {
+            event.preventDefault();
+            window.location = 'index.html?id=' + USER_ID;
+        })
 
         $("#perfil").click(function(event) {
             event.preventDefault();
@@ -94,7 +109,6 @@
     </article>
     `);
     }
-
 
     function namePost(name, photo) {
         $(`div[data-total-id=${USER_ID}]`).prepend(`

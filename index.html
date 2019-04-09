@@ -43,9 +43,10 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Filtrar posts<span
                                 class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#" class="filter" id="filter-public">Público</a></li>
-                            <li><a href="#" class="filter" id="filter-private">Privado</a></li>
-                            <li><a href="#" class="filter" id="filter-friends">Amigos</a></li>
+                            <li><a href="#" id="filter-total">Todos</a></li>
+                            <li><a href="#" id="filter-public">Público</a></li>
+                            <li><a href="#" id="filter-private">Privado</a></li>
+                            <li><a href="#" id="filter-friends">Amigos</a></li>
                         </ul>
                         <li><a href="autenticacao.html" id="signout"><span class="glyphicon glyphicon-user"></span> Sign Out</a></li>
                     </li>
@@ -53,14 +54,14 @@
         </div>
     </nav>
     <aside class="perfil">
-        <div class="container-fluid">    
-                <div class="row">
-                  <div class="col-sm-2">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-2">
                     <p><a href="#">Link</a></p>
                     <p><a href="#">Link</a></p>
                     <p><a href="#">Link</a></p>
-                  </div>
-                </aside>         
+                </div>
+    </aside>
     <form class="container">
         <div class="txtarea col-md-6">
             <div class="form-group">
@@ -75,11 +76,11 @@
             </div>
         </div>
     </form>
-    <form class="container">
+    <form class="container" id="container-post-total">
         <section class="list-group col-md-6" id="post-total">
         </section>
     </form>
-    <form class="container">
+    <form class="container" id="container-post-total-filter">
         <section class="list-group col-md-6" id="post-total-filter">
         </section>
     </form>

@@ -1,6 +1,7 @@
     let database = firebase.database();
     let USER_ID = window.location.search.match(/\?id=(.*)/)[1]
     let storage = firebase.storage().ref("photos")
+
     $(document).ready(function() {
         database.ref("tasks/" + USER_ID).once('value')
             .then(function(snapshot) {
@@ -38,13 +39,46 @@
                 });
             })
 
+        $("#filter-public").on("click", function(e) {
+            e.preventDefault()
+            $("#post-total-filter").empty()
+            database.ref("tasks/" + USER_ID).on('child_added', snapshot => {
+                if (snapshot.val().filter === "Público") {
+                    filterPost(snapshot.val().text, snapshot.val().likes, snapshot.val().filter, snapshot.val().date, snapshot.key)
+                }
+            })
+        })
 
+        $("#filter-private").on("click", function(e) {
+            e.preventDefault()
+            $("#post-total-filter").empty()
+            database.ref("tasks/" + USER_ID).on('child_added', snapshot => {
+                if (snapshot.val().filter === "Privado") {
+                    filterPost(snapshot.val().text, snapshot.val().likes, snapshot.val().filter, snapshot.val().date, snapshot.key)
+                }
+            })
+        })
+
+        $("#filter-friends").on("click", function(e) {
+            e.preventDefault()
+            $("#post-total-filter").empty()
+            database.ref("tasks/" + USER_ID).on('child_added', snapshot => {
+                if (snapshot.val().filter === "Amigos") {
+                    filterPost(snapshot.val().text, snapshot.val().likes, snapshot.val().filter, snapshot.val().date, snapshot.key)
+                }
+            })
+        })
 
         $('#public').keyup(disableBtn)
 
         $("#btnpost").on("click", newPost)
 
-        $("#signup").click(signUp)
+        $("#signout").click(signOut)
+
+        $("#home").click(function(event) {
+            event.preventDefault();
+            window.location = 'index.html?id=' + USER_ID;
+        })
 
         $("#perfil").click(function(event) {
             event.preventDefault();
@@ -52,15 +86,38 @@
         })
     })
 
+    function filterPost(post, likes, filterPost, datePost, key) {
+        $("#post-total").hide()
+        $("#post-total-filter").prepend(`
+        <article>
+    <div id="post" data-total-id=${USER_ID} class="list-group-item well">
+    <div class="row align-items-end">
+    <div class="col-xs-4">
+    <p class="text-muted text-min text-center" data-date-id=${key}>${datePost}</p>
+    </div>
+    </div>
+    <p class="text-center text" data-text-id=${key}>${post}</p>
+    <p class="text-min" data-filter-id=${key}>Post ${filterPost}</p>
+    <textarea class="form-control" id="text-comment" data-comment-id=${key} placeholder="Faça seu comentário"></textarea>
+
+    <button type="button" class="btn btn-primary" id="btn-comment" data-comment-text-id=${key}>OK</button>
+    </div>
+    <button type="button" class="btn btn-primary edit" data-edit-id=${key} data-toggle="modal" data-target="#myModal"><i class="far fa-edit"></i></button>
+    <button type="button" class="btn btn-primary " data-delete-id=${key} data-toggle="modal" data-target="#myModal-delete"><i class="far fa-trash-alt"></i></button>
+    <button type="button" class="btn btn-primary " data-comment-id=${key} data-toggle="modal" data-target="#myModal-comment">Comentários</button>
+    <button type="button" class="btn btn-primary" data-like-id=${key}><i class="far fa-thumbs-up"></i> <span data-like-id=${key} id="likes">${likes}</span> </button>
+    </article>
+    `);
+    }
 
     function namePost(name, photo) {
         $(`div[data-total-id=${USER_ID}]`).prepend(`
         <div class="row align-items-center">
-        <div class="col-xs-3">
+        <div class="col-xs-4">
         <img src=${photo} class="img-responsive img-circle" id="photo" alt=${name}></img>
         </div>
-        <div class="col-xs-9 align-items-end">
-        <p class="text text-left name">${name}</p>
+        <div class="col-xs-8 align-items-end">
+        <p class="text text-left name" id="name-user">${name}</p>
         </div>
         </div>
 `)
@@ -68,10 +125,10 @@
 
     function creatPost(post, likes, filterPost, datePost, key) {
         $("#post-total").prepend(`
-    <li>
+    <article>
     <div id="post" data-total-id=${USER_ID} class="list-group-item well">
     <div class="row align-items-end">
-    <div class="col-xs-3">
+    <div class="col-xs-4">
     <p class="text-muted text-min text-center" data-date-id=${key}>${datePost}</p>
     </div>
     </div>
@@ -85,7 +142,7 @@
     <button type="button" class="btn btn-primary " data-delete-id=${key} data-toggle="modal" data-target="#myModal-delete"><i class="far fa-trash-alt"></i></button>
     <button type="button" class="btn btn-primary " data-comment-id=${key} data-toggle="modal" data-target="#myModal-comment">Comentários</button>
     <button type="button" class="btn btn-primary" data-like-id=${key}><i class="far fa-thumbs-up"></i> <span data-like-id=${key} id="likes">${likes}</span> </button>
-    </li>
+    </article>
     `);
 
         let count = 0;
@@ -187,6 +244,7 @@
       `)
     }
 
+
     function disableBtn() {
         if ($('#public').val().length <= 0) {
             $('#btnpost').prop("disabled", true)
@@ -200,16 +258,20 @@
         let post = $("#public").val()
         let postLikes = 0
         let datePost = time()
+        let photo = $("#photo").val()
+        let namePost = $("#name-user").val()
+        console.log(photo, namePost)
         let selectPost = $("#select-post option:selected").text()
         let newPost = database.ref("tasks/" + USER_ID).push({
-            name: "",
-            photo: "",
-            comments: "",
-            text: post,
-            likes: 0,
-            filter: selectPost,
-            date: time()
-        })
+                name: namePost,
+                photo: photo,
+                comments: "",
+                text: post,
+                likes: 0,
+                filter: selectPost,
+                date: time()
+            })
+            // namePost(namePost, photo)
         creatPost(post, postLikes, selectPost, datePost, newPost.key)
         $('#btnpost').prop("disabled", true)
         $('form')[0].reset()
@@ -217,7 +279,7 @@
 
 
 
-    function signUp(event) {
+    function signOut(event) {
         event.preventDefault();
         firebase.auth().signOut()
             .then(function() {

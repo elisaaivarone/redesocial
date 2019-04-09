@@ -1,6 +1,4 @@
-
-    
-    body {
+body {
         background: url(fundo.jpg) no-repeat center fixed transparent;
         width: 100%;
     }
@@ -70,50 +68,43 @@
         margin-left: 5%;
     }
     
-    .img-responsive {
+.img-responsive {
+    width: 100%;
+}
 
+.like {
+    outline: none;
+    border: none;
+    width: 5%;
+    height: 5%;
+}
+
+.text {
+    font-family: 'Roboto Slab', serif;
+    font-size: 14px;
+}
+
+.text-min {
+    font-family: 'Roboto Slab', serif;
+    font-size: 12px;
+}
+
+.name {
+    padding-top: 10%;
+}
+
+@media screen and (max-width:600px) {
+    #img-timeline,
+    #img-logo {
         width: 100%;
     }
-    
+}
+
+@media screen and (max-width:1200px) {
+    #text-timeline {}
     .like {
-        outline: none;
         border: none;
-        width: 5%;
-        height: 5%;
-    }
-    
-    .text {
-        font-family: 'Roboto Slab', serif;
-        font-size: 14px;
-    }
-    
-    .text-min {
-        font-family: 'Roboto Slab', serif;
-        font-size: 12px;
-    }
-    
-    .name {
-        padding-top: 10%;
-    }
-    
-    @media screen and (max-width:700px) {
-        #img-timeline, #img-logo {
-         width: 100%;
-        }
-        .form-group {
-        box-shadow: none; 
-        width: 350px;
-        }
-        
-    }
-    
-    @media screen and (max-width:1200px) {
-        #text-timeline {
+        width: 15%;
+        height: 15%;
     }
 
-        .like {
-            border: none;
-            width: 15%;
-            height: 15%;
-        }
-    }

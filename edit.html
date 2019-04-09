@@ -7,12 +7,12 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="src/style.css" />
   <!--Fonts e Icons-->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css"
-    integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y"
+    crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
   <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
   <!--Firebase-->
   <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-auth.js"></script>
@@ -40,81 +40,87 @@
         <ul class="nav navbar-nav navbar-right menu-style">
           <li><a href="#" id="home">Home</a></li>
           <li><a href="#" id="profile">Perfil</a></li>
-          <li class="active"><a href="#">Editar perfil</a></li>
-          <li><a href="autenticacao.html" id="signout"><span class="glyphicon glyphicon-user"></span> Sign Out</a></li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Filtrar posts<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Público</a></li>
+              <li><a href="#">Privado</a></li>
+              <li><a href="#">Amigos</a></li>
+            </ul>
+          </li>
+          <li><a href="autenticacao.html" id="signout"><span class="glyphicon glyphicon-user"></span>Sign Out</a></li>
         </ul>
       </div>
     </div>
   </nav>
   <section>
-    <section>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 ">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h4>Meu Perfil</h4>
-              </div>
-              <div class="panel-body">
-                <div class="box box-info">
-                  <div class="box-body">
-                    <div class="col-sm-4">
-                      <div>
-                        <img alt="User Pic" id="perfil" class="img-circle img-responsive">
-                        <input type="file" id="photo">
-                      </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 ">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4>Editar Perfil</h4>
+            </div>
+            <div class="panel-body">
+              <div class="box box-info">
+                <div class="box-body">
+                  <div class="col-sm-4">
+                    <div>
+                      <img alt="User Pic" id="perfil" class="img-circle img-responsive">
+                      <input type="file" id="photo">
                     </div>
-                    <div class="col-sm-6">
-                      <h2 style="color:#00b1b1;">
-                        <input type="text" class="form-control" id="name">
-                      </h2>
-                      <span>
-                        <p><i class="fas fa-book-reader"></i> Sobre mim:</p>
-                        <textarea class="form-control" id="about"></textarea>
-                      </span>
-                    </div>
-                    <div class="clearfix"></div>
-                    <hr style="margin:5px 0 5px 0;">
-
-                    <div class="col-sm-4 col-xs-6 tital"><i class="glyphicon glyphicon-briefcase"></i> Idade:</div>
-                    <div class="col-sm-3"><input type="number" class="form-control" id="years"></div>
-                    <div class="clearfix"></div>
-                    <div class="bot-border"></div>
-
-                    <div class="col-sm-4 col-xs-6 tital"><i class="glyphicon glyphicon-home"></i> Cidade:</div>
-                    <div class="col-sm-6"><input type="text" class="form-control" id="city"></div>
-                    <div class="clearfix"></div>
-                    <div class="bot-border"></div>
-
-                    <div class="col-sm-4 col-xs-6 tital"><i class="glyphicon glyphicon-map-marker"></i> Estado:</div>
-                    <div class="col-sm-6"><input type="text" class="form-control" id="state"></div>
-                    <div class="clearfix"></div>
-                    <div class="bot-border"></div>
-
-                    <div class="col-sm-4 col-xs-6 tital"><i class="fas fa-child"></i> Filho(s):</div>
-                    <div class="col-sm-3"><input type="number" class="form-control" id="kids"></div>
-                    <div class="clearfix"></div>
-                    <div class="bot-border"></div>
-
-                    <div class="col-sm-4 col-xs-6 tital"><i class="fas fa-heart"></i> Civil:</div>
-                    <div class="col-sm-6"><input type="text" class="form-control" id="status"></div>
-                    <div class="clearfix"></div>
-                    <div class="bot-border"></div>
-
-                    <button id="save" class="btn btn-primary" disabled>Salvar</button>
-                    <button id="back" class="btn btn-danger" disabled>Voltar</button>
                   </div>
+                  <div class="col-sm-6">
+                    <h2 style="color:#00b1b1;">
+                      <input type="text" class="form-control" id="name">
+                    </h2>
+                    <span>
+                      <p><i class="fas fa-book-reader"></i> Sobre mim:</p>
+                      <textarea class="form-control" id="about"></textarea>
+                    </span>
+                  </div>
+                  <div class="clearfix"></div>
+                  <hr style="margin:5px 0 5px 0;">
+
+                  <div class="col-sm-4 col-xs-6 tital"><i class="glyphicon glyphicon-briefcase"></i> Idade:</div>
+                  <div class="col-sm-3"><input type="number" class="form-control" id="years"></div>
+                  <div class="clearfix"></div>
+                  <div class="bot-border"></div>
+
+                  <div class="col-sm-4 col-xs-6 tital"><i class="glyphicon glyphicon-home"></i> Cidade:</div>
+                  <div class="col-sm-6"><input type="text" class="form-control" id="city"></div>
+                  <div class="clearfix"></div>
+                  <div class="bot-border"></div>
+
+                  <div class="col-sm-4 col-xs-6 tital"><i class="glyphicon glyphicon-map-marker"></i> Estado:</div>
+                  <div class="col-sm-6"><input type="text" class="form-control" id="state"></div>
+                  <div class="clearfix"></div>
+                  <div class="bot-border"></div>
+
+                  <div class="col-sm-4 col-xs-6 tital"><i class="fas fa-child"></i> Filho(s):</div>
+                  <div class="col-sm-3"><input type="number" class="form-control" id="kids"></div>
+                  <div class="clearfix"></div>
+                  <div class="bot-border"></div>
+
+                  <div class="col-sm-4 col-xs-6 tital"><i class="fas fa-heart"></i> Civil:</div>
+                  <div class="col-sm-6"><input type="text" class="form-control" id="status"></div>
+                  <div class="clearfix"></div>
+                  <div class="bot-border"></div>
+
+                  <button id="save" class="btn btn-primary" disabled>Salvar</button>
+                  <button id="back" class="btn btn-danger" disabled>Voltar</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
-    <script src="http://code.jquery.com/jquery-3.3.1.min.js"
-      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <script src="src/edit.js"></script>
+    </div>
+  </section>
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="src/edit.js"></script>
 </body>
 
 </html>

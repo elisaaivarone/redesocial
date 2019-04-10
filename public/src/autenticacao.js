@@ -8,7 +8,7 @@ $(document).ready(function() {
 
         firebase.auth().signInWithEmailAndPassword(email, password)
             .then(function(response) {
-                window.location = '/public/timeline.html?id=' + response.user.uid;
+                window.location = 'timeline.html?id=' + response.user.uid;
             })
             .catch(function(error) {
                 let errorCode = error.code;
@@ -26,7 +26,7 @@ $(document).ready(function() {
             .then(function(result) {
                 let token = result.credential.acessToken;
                 let user = result.user;
-                window.location = '/public/timeline.html?id=' + result.user.uid;
+                window.location = 'timeline.html?id=' + result.user.uid;
             })
             .catch(function(error) {
                 let errorCode = error.code;
@@ -40,6 +40,6 @@ $(document).ready(function() {
     //Criar nova conta
     $("#newAccount").click(function(event) {
         event.preventDefault();
-        window.location = "/public/cadastro.html";
+        window.location = "cadastro.html";
     });
 })

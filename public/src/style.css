@@ -1,5 +1,5 @@
 body {
-    background: url(/imagem/fundo.jpg) no-repeat center fixed transparent;
+    background: url(/public/imagem/fundo.jpg) no-repeat center fixed transparent;
     width: 100%;
     /*navegador*/
 }

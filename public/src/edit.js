@@ -8,8 +8,8 @@ $(document).ready(function() {
             snapshot.forEach(function(childSnapshot) {
                 let childData = childSnapshot.val();
 
-                if (childData.photo === "/imagem/perfil.png") {
-                    $("#img-profile").attr("src", "/imagem/perfil.png");
+                if (childData.photo === "imagem/perfil.png") {
+                    $("#img-profile").attr("src", "imagem/perfil.png");
                 } else {
                     storage.child(USER_ID).getDownloadURL().then(url => {
                         $("#img-profile").attr("src", url)
@@ -74,19 +74,19 @@ $(document).ready(function() {
                 })
             })
         alert("Dados salvos com sucesso!")
-        window.location = '/public/perfil.html?id=' + USER_ID;
+        window.location = 'perfil.html?id=' + USER_ID;
     });
 
     $("#back").click(function() {
-        window.location = '/public/perfil.html?id=' + USER_ID;
+        window.location = 'perfil.html?id=' + USER_ID;
     });
 
     $("#home").click(function() {
-        window.location = '/public/timeline.html?id=' + USER_ID;
+        window.location = 'timeline.html?id=' + USER_ID;
     });
 
     $("#profile").click(function() {
-        window.location = '/public/perfil.html?id=' + USER_ID;
+        window.location = 'perfil.html?id=' + USER_ID;
     });
 
 });

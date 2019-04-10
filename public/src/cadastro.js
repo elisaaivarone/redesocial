@@ -13,10 +13,10 @@ $(document).ready(function() {
 
         firebase.auth().createUserWithEmailAndPassword(email, password)
             .then(function(response) {
-                window.location = '/public/timeline.html?id=' + response.user.uid;
+                window.location = 'timeline.html?id=' + response.user.uid;
                 database.ref("users/" + response.user.uid).push({
                     name: name,
-                    photo: "/imagem/perfil.png",
+                    photo: "imagem/perfil.png",
                     years: "",
                     city: "",
                     state: state,
@@ -35,6 +35,6 @@ $(document).ready(function() {
 
     $("#back").click(function(event) {
         event.preventDefault();
-        window.location = "/public/index.html";
+        window.location = "index.html";
     });
 })

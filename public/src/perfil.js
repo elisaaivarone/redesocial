@@ -8,8 +8,8 @@ $(document).ready(function(response) {
             snapshot.forEach(function(childSnapshot) {
                 let childData = childSnapshot.val();
 
-                if (childData.photo === "/imagem/perfil.png") {
-                    $("#img-profile").attr("src", "/imagem/perfil.png");
+                if (childData.photo === "imagem/perfil.png") {
+                    $("#img-profile").attr("src", "imagem/perfil.png");
                 } else {
                     storage.child(USER_ID).getDownloadURL().then(url => {
                         $("#img-profile").attr("src", url)
@@ -36,15 +36,15 @@ $(document).ready(function(response) {
         });
 
     $("#edit").click(function() {
-        window.location = '/public/edit.html?id=' + USER_ID;
+        window.location = 'edit.html?id=' + USER_ID;
     });
 
     $("#back").click(function() {
-        window.location = '/public/timeline.html?id=' + USER_ID;
+        window.location = 'timeline.html?id=' + USER_ID;
     });
 
     $("#home").click(function() {
-        window.location = '/public/timeline.html?id=' + USER_ID;
+        window.location = 'timeline.html?id=' + USER_ID;
     });
 
 });

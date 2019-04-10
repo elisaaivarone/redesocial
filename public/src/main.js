@@ -10,22 +10,22 @@
                     let childData = childSnapshot.val();
                     creatPost(childData.text, childData.likes, childData.filter, childData.date, childKey)
 
-                    let commentsRef = database.ref("tasks/" + USER_ID + "/" + childKey + "/" + "comments/")
-                    commentsRef.once('value', function(snapshot) {
-                        snapshot.forEach(function(childSnapshot) {
-                            let childKeyComment = childSnapshot.key;
-                            let childDataComment = childSnapshot.val();
-                            // console.log(childDataComment.comment, childKey)
-                            // modalComment(childKey, childDataComment.comment)
-                            // commentDelete(childKey, childKeyComment)
-                        });
-                    });
+                    // let commentsRef = database.ref("tasks/" + USER_ID + "/" + childKey + "/" + "comments/")
+                    // commentsRef.once('value', function(snapshot) {
+                    //     snapshot.forEach(function(childSnapshot) {
+                    //         let childKeyComment = childSnapshot.key;
+                    //         let childDataComment = childSnapshot.val();
+                    // console.log(childDataComment.comment, childKey)
+                    // modalComment(childKey, childDataComment.comment)
+                    // commentDelete(childKey, childKeyComment)
+                    //     });
+                    // });
                 });
             })
 
         database.ref("users/" + USER_ID).on('child_added', snapshot => {
             if (snapshot.val().photo === "") {
-                $("#photo").attr("src", "/imagem/perfil.png");
+                $("#photo").attr("src", "imagem/perfil.png");
             } else {
                 storage.child(USER_ID).getDownloadURL().then(url => {
                     $("#photo").attr("src", url)
@@ -315,7 +315,7 @@
         event.preventDefault();
         firebase.auth().signOut()
             .then(function() {
-                window.location = "/public/index.html"
+                window.location = "index.html"
             }).catch(function(error) {
                 // An error happened.
             })
@@ -323,12 +323,12 @@
 
     function returnHome(event) {
         event.preventDefault();
-        window.location = '/public/timeline.html?id=' + USER_ID;
+        window.location = 'timeline.html?id=' + USER_ID;
     }
 
     function returnPerfil(event) {
         event.preventDefault();
-        window.location = '/public/perfil.html?id=' + USER_ID;
+        window.location = 'perfil.html?id=' + USER_ID;
     }
 
     function time() {

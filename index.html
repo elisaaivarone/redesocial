@@ -23,67 +23,70 @@
 </head>
 
 <body>
-
-    <nav class="navbar navbar-inverse nav-timeline">
-        <div class="container-fluid">
-            <img id="img-timeline" class="img-responsive" src="imagem/logotipo.jpeg">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+    <header>
+        <nav class="navbar navbar-inverse nav-timeline">
+            <div class="container-fluid">
+                <img id="img-timeline" class="img-responsive" src="imagem/logotipo.jpeg">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a id="text-timeline" class="navbar-brand">Kids Life</a>
-            </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav navbar-right menu-style">
-                    <li class="active"><a href="#" id="home">Home</a></li>
-                    <li><a href="#" id="perfil">Perfil</a></li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Filtrar posts<span
-                                class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#" id="filter-total">Todos</a></li>
-                            <li><a href="#" id="filter-public">Público</a></li>
-                            <li><a href="#" id="filter-private">Privado</a></li>
-                            <li><a href="#" id="filter-friends">Amigos</a></li>
-                        </ul>
-                        <li><a href="autenticacao.html" id="signout"><span class="glyphicon glyphicon-user"></span> Sign Out</a></li>
-                    </li>
-            </div>
-        </div>
-    </nav>
-    <aside class="perfil">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-2">
-                    <p><a href="#">Link</a></p>
-                    <p><a href="#">Link</a></p>
-                    <p><a href="#">Link</a></p>
+                    <a id="text-timeline" class="navbar-brand">Kids Life</a>
                 </div>
-    </aside>
-    <form class="container">
-        <div class="txtarea col-md-6">
-            <div class="form-group">
-                <label for="comment"></label>
-                <textarea class="form-control text" rows="5" id="public" placeholder="Tire suas dúvidas ou compartilhe a sua experiência"></textarea>
-                <button type="button" class="btn btn-primary" id="btnpost" disabled>Publicar</button>
-                <select class="btn" id="select-post">
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav navbar-right menu-style">
+                        <li class="active"><a href="#" id="home">Home</a></li>
+                        <li><a href="#" id="perfil">Perfil</a></li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Filtrar posts<span
+                                class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" id="filter-total">Todos</a></li>
+                                <li><a href="#" id="filter-public">Público</a></li>
+                                <li><a href="#" id="filter-private">Privado</a></li>
+                                <li><a href="#" id="filter-friends">Amigos</a></li>
+                            </ul>
+                            <li><a href="autenticacao.html" id="signout"><span class="glyphicon glyphicon-user"></span> Sign Out</a></li>
+                        </li>
+                </div>
+            </div>
+        </nav>
+        <aside class="perfil">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <p><a href="#">Link</a></p>
+                        <p><a href="#">Link</a></p>
+                        <p><a href="#">Link</a></p>
+                    </div>
+        </aside>
+    </header>
+    <main>
+        <form class="container" id="container-post">
+            <div class="txtarea col-md-6">
+                <div class="form-group">
+                    <label for="comment"></label>
+                    <textarea class="form-control text" rows="5" id="public" placeholder="Tire suas dúvidas ou compartilhe a sua experiência"></textarea>
+                    <button type="button" class="btn btn-primary" id="btnpost" disabled>Publicar</button>
+                    <select class="btn" id="select-post">
                             <option class="public-select">Público</option>
                             <option class="private-select">Privado</option>
                             <option class="friends-select">Amigos</option>
                         </select>
+                </div>
             </div>
-        </div>
-    </form>
-    <form class="container" id="container-post-total">
-        <section class="list-group col-md-6" id="post-total">
-        </section>
-    </form>
-    <form class="container" id="container-post-total-filter">
-        <section class="list-group col-md-6" id="post-total-filter">
-        </section>
-    </form>
+        </form>
+        <form class="container" id="container-post-total">
+            <section class="list-group col-md-6" id="post-total">
+            </section>
+        </form>
+        <form class="container" id="container-post-total-filter">
+            <section class="list-group col-md-6" id="post-total-filter">
+            </section>
+        </form>
+    </main>
 
     <div class="container mt-3">
 
@@ -95,33 +98,6 @@
     </div>
 
     <div class="container mt-3">
-
-        <!-- The Modal comment -->
-        <div class="modal fade" id="myModal-comment">
-            <div class="modal-dialog">
-                <div class="modal-content">
-
-                    <div class="modal-header">
-                        <h4 class="modal-title">Comentários</h4>
-                        <button type="button" class="close" data-dismiss="modal">×</button>
-                    </div>
-                    <div class="modal-body" id="modal-comment">
-                        <ul class="list-group" id="comment-new" data-comment-id=${key}></ul>
-                    </div>
-
-
-                    <div class="modal-footer">
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="container mt-3">
-
         <!-- The Modal delete-->
         <div class="modal fade" id="myModal-delete">
             <div class="modal-dialog">
@@ -146,6 +122,35 @@
                 </div>
             </div>
         </div>
+    </div>
+    </div>
+
+    <div class="container mt-3">
+        <!-- The Modal delete-->
+        <div class="modal fade" id="myModal-delete-comment">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Tem certeza que deseja excluir?</h4>
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <button type="button" id="btn-delete-comment" class="btn btn-primary" data-dismiss="modal">Deletar</button>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
     <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>

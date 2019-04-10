@@ -1,89 +1,99 @@
 body {
-        background: url(fundo.jpg) no-repeat center fixed transparent;
-        width: 100%;
-/*navegador*/        
-    }
-    #img-logo{
-        width: 35%;
-        margin-top: 10px;
-    }
-    #img-timeline {
-        width: 30%;
-        height: 150px;
-        margin-left: -15px;
-    }
-    #img-profile{
-        width: 50%;
-    }
-    .nav-logo {
-        background-color:#3B414D;
-    }
-    .nav-timeline {
-        background-color: #3B414D !important;
-        border-top: none !important;
-    }
-    .affix {
-        top: 0;
-        width: 100%;
-        z-index: 9999 !important;
-    }
-    .affix + .container-fluid {
-        padding-top: 60px;
-    }
-    
+    background: url(/imagem/fundo.jpg) no-repeat center fixed transparent;
+    width: 100%;
+    /*navegador*/
+}
+
+#img-logo {
+    width: 35%;
+    margin-top: 10px;
+}
+
+#img-timeline {
+    width: 30%;
+    height: 150px;
+    margin-left: -15px;
+}
+
+#img-profile {
+    width: 50%;
+}
+
+.nav-logo {
+    background-color: #3B414D;
+}
+
+.nav-timeline {
+    background-color: #3B414D !important;
+    border-top: none !important;
+}
+
+.affix {
+    top: 0;
+    width: 100%;
+    z-index: 9999 !important;
+}
+
+.affix+.container-fluid {
+    padding-top: 60px;
+}
+
+
 /* Loggin e Cadastro */
-    .title-login{
+
+.title-login {
     font-family: 'Roboto Slab', serif;
     font-size: 18px;
-       color:black;
-    }
-    
-    .container {
-        display: flex;
-        justify-content: center;
-        margin-top: 40px;
-     }
-     
-    .input-login{
-       margin-top: 8px;
-       
-    }
-    .form-group {
-        box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.418);
-        padding: 20px;
-        margin-top: 0%;
-    }
-    
-    
-    .submit,
-    .create-btn,
-    .text-logo,
-    .name-user{
-        font-family: 'Roboto Slab', serif;
-        font-size: 18px;
-        color: #DB9B79;
-    }
-    
-    .title-signup {
-        display: inline-flex;
-        margin-left: 40px;
-        padding: 20px;
-    }
-    
- /* Timeline */   
-    .list-group-item {
-        word-wrap: break-word;
-        margin: 2% 4% 0% 4%;
-    }
+    color: black;
+}
 
-    .btn {
-        margin-left: 1%;
-        margin-top: 2%;
-    }
-    
-    .edit {
-        margin-left: 5%;
-    }
+.container {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.input-login {
+    margin-top: 8px;
+}
+
+.form-group {
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.418);
+    padding: 20px;
+    margin-top: 0%;
+}
+
+.submit,
+.create-btn,
+.text-logo,
+.name-user {
+    font-family: 'Roboto Slab', serif;
+    font-size: 18px;
+    color: #DB9B79;
+}
+
+.title-signup {
+    display: inline-flex;
+    margin-left: 40px;
+    padding: 20px;
+}
+
+
+/* Timeline */
+
+.list-group-item {
+    word-wrap: break-word;
+    margin: 2% 4% 0% 4%;
+}
+
+.btn {
+    margin-left: 1%;
+    margin-top: 2%;
+}
+
+.edit {
+    margin-left: 5%;
+}
 
 .like {
     outline: none;
@@ -105,11 +115,15 @@ body {
 .name {
     padding-top: 10%;
 }
+
+
 /*Perfil*/
+
 .line-perfil {
-    margin:5px 0 5px 0;
-    color:gray;
+    margin: 5px 0 5px 0;
+    color: gray;
 }
+
 .painel-body {
     height: 300px;
     margin-left: -10px;
@@ -125,22 +139,20 @@ body {
     }
     .txtarea,
     .painel-body,
-    .list-group{
+    .list-group {
         width: 350px;
     }
 }
 
-
 @media screen and (max-width: 767px) {
     .sidenav {
-      height: auto;
-      padding: 15px;
+        height: auto;
+        padding: 15px;
     }
 }
 
-    .like {
-        border: none;
-        width: 15%;
-        height: 15%;
-    }
-
+.like {
+    border: none;
+    width: 15%;
+    height: 15%;
+}

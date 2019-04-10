@@ -93,7 +93,7 @@ Pesquisa com usuários:
 ## Produto final 
 (Apresentação do projeto final)
 
-Link hosting**
+[Firebase](https://rede-social-ffbed.firebaseapp.com/index.html)
 
 #### Criação de uma conta de usuário e início da sessão
 

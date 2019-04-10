@@ -9,11 +9,11 @@ $(document).ready(function (response) {
         let childData = childSnapshot.val();
 
         if (childData.photo === "imagem/perfil.png") {
-          $("#perfil").attr("src", "imagem/perfil.png");
+          $("#img-profile").attr("src", "imagem/perfil.png");
         }
         else {
           storage.child(USER_ID).getDownloadURL().then(url => {
-            $("#perfil").attr("src", url)
+            $("#img-profile").attr("src", url)
           })
         }
 

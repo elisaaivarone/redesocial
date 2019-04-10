@@ -75,7 +75,7 @@
             window.location = 'index.html?id=' + USER_ID;
         })
 
-        $("#perfil").click(function(event) {
+        $("#profile").click(function(event) {
             event.preventDefault();
             window.location = 'perfil.html?id=' + USER_ID;
         })

@@ -16,7 +16,8 @@
                             let childKeyComment = childSnapshot.key;
                             let childDataComment = childSnapshot.val();
                             // console.log(childDataComment.comment, childKey)
-                            newComment(childDataComment.comment, childKey)
+                            // modalComment(childKey, childDataComment.comment)
+                            // commentDelete(childKey, childKeyComment)
                         });
                     });
                 });
@@ -28,82 +29,103 @@
             } else {
                 storage.child(USER_ID).getDownloadURL().then(url => {
                     $("#photo").attr("src", url)
-                    snapshot.val().photo === url
-                    namePost(snapshot.val().name, url)
+                        // namePost(snapshot.val().name, url)
+                        // namePostFilter(snapshot.val().name, url)
+                        //console.log(snapshot.val().name, snapshot.val().photo)
                 })
             }
         })
 
-        $("#filter-public").on("click", function(e) {
-            e.preventDefault()
-            $("#post-total-filter").empty()
-            database.ref("tasks/" + USER_ID).on('child_added', snapshot => {
-                if (snapshot.val().filter === "Público") {
-                    filterPosts(snapshot.val().text, snapshot.val().likes, snapshot.val().filter, snapshot.val().date, snapshot.key)
-                }
-            })
-        })
+        $("#filter-public").click(filterPublic)
 
-        $("#filter-private").on("click", function(e) {
-            e.preventDefault()
-            $("#post-total-filter").empty()
-            database.ref("tasks/" + USER_ID).on('child_added', snapshot => {
-                if (snapshot.val().filter === "Privado") {
-                    filterPosts(snapshot.val().text, snapshot.val().likes, snapshot.val().filter, snapshot.val().date, snapshot.key)
-                }
-            })
-        })
+        $("#filter-private").click(filterPrivate)
 
-        $("#filter-friends").on("click", function(e) {
-            e.preventDefault()
-            $("#post-total-filter").empty()
-            database.ref("tasks/" + USER_ID).on('child_added', snapshot => {
-                if (snapshot.val().filter === "Amigos") {
-                    filterPosts(snapshot.val().text, snapshot.val().likes, snapshot.val().filter, snapshot.val().date, snapshot.key)
-                }
-            })
-        })
+        $("#filter-friends").click(filterFriends)
+
+        $("#filter-total").click(filterTotal)
 
         $('#public').keyup(disableBtn)
 
-        $("#btnpost").on("click", newPost)
+        $("#btnpost").click(newPost)
 
         $("#signout").click(signOut)
 
-        $("#home").click(function(event) {
-            event.preventDefault();
-            window.location = 'index.html?id=' + USER_ID;
-        })
+        $("#home").click(returnHome)
 
-        $("#profile").click(function(event) {
-            event.preventDefault();
-            window.location = 'perfil.html?id=' + USER_ID;
-        })
+        $("#profile").click(returnPerfil)
 
-        $("#filter-total").click(function(event) {
-            event.preventDefault();
-            window.location = 'index.html?id=' + USER_ID;
-        })
+        // $("#filter-total").click(returnHome)
+
     })
 
+    function filterPublic(e) {
+        e.preventDefault()
+        $("#post-total-filter").empty()
+        database.ref("tasks/" + USER_ID).on('child_added', snapshot => {
+            if (snapshot.val().filter === "Público") {
+                filterPosts(snapshot.val().text, snapshot.val().likes, snapshot.val().filter, snapshot.val().date, snapshot.key)
+            }
+        })
+    }
+
+    function filterFriends(e) {
+        e.preventDefault()
+        $("#post-total-filter").empty()
+        database.ref("tasks/" + USER_ID).on('child_added', snapshot => {
+            if (snapshot.val().filter === "Amigos") {
+                filterPosts(snapshot.val().text, snapshot.val().likes, snapshot.val().filter, snapshot.val().date, snapshot.key)
+            }
+        })
+    }
+
+    function filterPrivate(e) {
+        e.preventDefault()
+        $("#post-total-filter").empty()
+        database.ref("tasks/" + USER_ID).on('child_added', snapshot => {
+            if (snapshot.val().filter === "Privado") {
+                filterPosts(snapshot.val().text, snapshot.val().likes, snapshot.val().filter, snapshot.val().date, snapshot.key)
+            }
+        })
+    }
+
+    function filterTotal(e) {
+        e.preventDefault()
+        $("#post-total-filter").empty()
+        database.ref("tasks/" + USER_ID).on('child_added', snapshot => {
+            if (snapshot.val().filter === "Privado" || "Amigos" || "Público") {
+                filterPosts(snapshot.val().text, snapshot.val().likes, snapshot.val().filter, snapshot.val().date, snapshot.key)
+            }
+        })
+    }
+
+    // function namePostFilter(name, photo) {
+    //     $(`div[data-total-filter-id=${USER_ID}]`).prepend(`
+    //         <div class="row align-items-center">
+    //         <div class="col-xs-4">
+    //         <img src=${photo} class="img-responsive img-circle" id="photo" alt=${name}></img>
+    //         </div>
+    //         <div class="col-xs-8 align-items-end">
+    //         <p class="text text-left name" id="name-user">${name}</p>
+    //         </div>
+    //         </div>
+    // `)
+    // }
+
     function filterPosts(post, likes, filterPost, datePost, key) {
-        $("#container-post-total").empty()
+        $("#post-total, #container-post").empty()
         $("#post-total-filter").prepend(`
         <article>
-        <div id="post" data-total-id=${USER_ID} class="list-group-item well">
-        <p class="text-center text" id="text-post" data-text-id=${key}>${post}</p>
+        <div id="post" data-total-filter-id=${USER_ID} class="list-group-item well">
+        <p class="text-justify text" id="text-post" data-text-id=${key}>${post}</p>
         <div class="row align-items-end">
         <div class="col-xs-6">
-        <p class="text-muted text-min text-center" data-date-id=${key}>${datePost}</p>
-        <p class="text-muted text-min text-center" data-filter-id=${key}>Post ${filterPost}</p>
+        <p class="text-muted text-min" data-date-id=${key}>${datePost}</p>
+        <p class="text-muted text-min" data-filter-id=${key}>Post ${filterPost}</p>
         </div>
         </div>
-        <textarea class="form-control" id="text-comment" data-comment-id=${key} placeholder="Faça seu comentário"></textarea>
-        <button type="button" class="btn btn-primary" id="btn-comment" data-comment-text-id=${key}>OK</button>
         </div>
         <button type="button" class="btn btn-primary edit" data-edit-id=${key} data-toggle="modal" data-target="#myModal"><i class="far fa-edit"></i></button>
         <button type="button" class="btn btn-primary " data-delete-id=${key} data-toggle="modal" data-target="#myModal-delete"><i class="far fa-trash-alt"></i></button>
-        <button type="button" class="btn btn-primary " data-comment-id=${key} data-toggle="modal" data-target="#myModal-comment">Comentários</button>
         <button type="button" class="btn btn-primary" data-like-id=${key}><i class="far fa-thumbs-up"></i> <span data-like-id=${key} id="likes">${likes}</span> </button>
         </article>
     `);
@@ -113,71 +135,92 @@
         postDelete(key)
     }
 
-    function namePost(name, photo) {
-        $(`div[data-total-id=${USER_ID}]`).prepend(`
-            <div class="row align-items-center">
-            <div class="col-xs-4">
-            <img src=${photo} class="img-responsive img-circle" id="photo" alt=${name}></img>
-            </div>
-            <div class="col-xs-8 align-items-end">
-            <p class="text text-left name" id="name-user">${name}</p>
-            </div>
-            </div>
-    `)
-    }
+    // function namePost(name, photo) {
+    //     $(`div[data-total-id=${USER_ID}]`).prepend(`
+    //         <div class="row align-items-center">
+    //         <div class="col-xs-4">
+    //         <img src=${photo} class="img-responsive img-circle" id="photo" alt=${name}></img>
+    //         </div>
+    //         <div class="col-xs-8 align-items-end">
+    //         <p class="text text-left name" id="name-user">${name}</p>
+    //         </div>
+    //         </div>
+    // `)
+    //     console.log(name, photo)
+    // }
 
     function creatPost(post, likes, filterPost, datePost, key) {
         $("#post-total").prepend(`
     <article>
     <div id="post" data-total-id=${USER_ID} class="list-group-item well">
-    <p class="text-center text" data-text-id=${key}>${post}</p>
+    <p class="text-justify text" data-text-id=${key}>${post}</p>
     <div class="row align-items-end">
     <div class="col-xs-6">
-    <p class="text-muted text-min text-center" data-date-id=${key}>${datePost}</p>
-    <p class="text-muted text-min text-center" data-filter-id=${key}>Post ${filterPost}</p>
+    <p class="text-muted text-min" data-date-id=${key}>${datePost}</p>
+    <p class="text-muted text-min" data-filter-id=${key}>Post ${filterPost}</p>
     </div>
     </div>
-    <textarea class="form-control" id="text-comment" data-comment-id=${key} placeholder="Faça seu comentário"></textarea>
-    <button type="button" class="btn btn-primary" id="btn-comment" data-comment-text-id=${key}>OK</button>
     </div>
     <button type="button" class="btn btn-primary edit" data-edit-id=${key} data-toggle="modal" data-target="#myModal"><i class="far fa-edit"></i></button>
     <button type="button" class="btn btn-primary " data-delete-id=${key} data-toggle="modal" data-target="#myModal-delete"><i class="far fa-trash-alt"></i></button>
-    <button type="button" class="btn btn-primary " data-comment-id=${key} data-toggle="modal" data-target="#myModal-comment">Comentários</button>
     <button type="button" class="btn btn-primary" data-like-id=${key}><i class="far fa-thumbs-up"></i> <span data-like-id=${key} id="likes">${likes}</span> </button>
+    <article data-comment-id=${key} style="display:none"></article>
     </article>
     `);
         let oldText = $(`p[data-text-id=${key}]`).text()
         likePost(key)
         editPost(key, oldText)
         postDelete(key)
-        commentPost(key)
+            // commentPost(key)
     }
 
-    function commentPost(key) {
-        $(`button[data-comment-text-id=${key}]`).click(function(event) {
-            event.preventDefault();
-            let comments = $(`textarea[data-comment-id=${key}]`).val()
-            $('form')[1].reset()
-            let commentPost = database.ref("tasks/" + USER_ID + "/" + key + "/" + "comments").push({
-                comment: comments
-            })
+    // function commentPost(key) {
+    //     $(`button[data-comment-text-id=${key}]`).click(function(event) {
+    //         console.log(key)
+    //         event.preventDefault();
+    //         let comments = $(`textarea[data-comment-id=${key}]`).val()
+    //         console.log(comments)
+    //         $('form')[1].reset()
+    //         let commentPost = database.ref("tasks/" + USER_ID + "/" + key + "/" + "comments").push({
+    //                 comment: comments
+    //             })
+    //             // commentDelete(key, commentPost.key)
+    //         modalComment(key, comments)
+    //     })
+    // }
 
+    //     function modalComment(key, comments) {
+    //         $(`article[data-comment-id=${key}]`).prepend(`
+    //         <div class="list-group-item well">
+    //         <div class="row align-items-end">
+    //         <div class="col-xs-12">
+    //         <p class="text">${comments}</p>
 
-            $(`button[data-comment-id=${key}]`).click(function(event) {
-                event.preventDefault();
-                newComment(comments, key)
-                console.log(key)
-                    // let comments = $("#text-comment").val()
-                    // if (comments === undefined) {
-                    //     comments = ""
-                    // }
-                $("#modal-comment").html(`
-                <ul class="list-group" id="comment-new" data-comment-id=${key}></ul>
-                `)
+    //         </div>
+    //         </div>
+    //         </div>     
+    // `)
+    //         toggleButton(key)
+    //     }
 
-            })
-        })
-    }
+    //     function toggleButton(key) {
+    //         console.log(key)
+    //         $(`button[data-comment-id=${key}]`).click(function() {
+    //             $(`article[data-comment-id=${key}]`).toggle()
+    //         })
+    //     }
+
+    // function commentDelete(key, keyComment) {
+    //     $(`button[data-delete-comment-id=${key}]`).click(function(event) {
+    //         console.log(keyComment)
+    //         event.preventDefault();
+    //         $("#btn-delete-comment").click(function(event) {
+    //             event.preventDefault()
+    //             $(`button[data-delete-comment-id=${key}]`).parent().remove()
+    //             database.ref("tasks/" + USER_ID + "/" + key + "/" + "comments/" + keyComment).remove()
+    //         })
+    //     })
+    // }
 
     function likePost(key) {
         let count = 0;
@@ -241,20 +284,6 @@
         })
     }
 
-    function newComment(comment, key) {
-        // console.log(key, comment)
-        $("#comment-new").prepend(`
-        <div class="list-group-item well">
-        <div class="row align-items-end">
-    <div class="col-xs-12">
-        <p class="text" data-comment-id=${key}>${comment}</p>
-        </div>
-        </div>
-        </div>
-      `)
-    }
-
-
     function disableBtn() {
         if ($('#public').val().length <= 0) {
             $('#btnpost').prop("disabled", true)
@@ -268,13 +297,8 @@
         let post = $("#public").val()
         let postLikes = 0
         let datePost = time()
-        let photo = $("#photo").val()
-        let namePost = $("#name-user").val()
-        console.log(namePost)
         let selectPost = $("#select-post option:selected").text()
         let newPost = database.ref("tasks/" + USER_ID).push({
-                name: "",
-                photo: "",
                 comments: "",
                 text: post,
                 likes: 0,
@@ -282,8 +306,6 @@
                 date: time()
             })
             // namePost(namePost, photo)
-
-        filterPosts(post, postLikes, selectPost, datePost, newPost.key)
         creatPost(post, postLikes, selectPost, datePost, newPost.key)
         $('#btnpost').prop("disabled", true)
         $('form')[0].reset()
@@ -297,6 +319,16 @@
             }).catch(function(error) {
                 // An error happened.
             })
+    }
+
+    function returnHome(event) {
+        event.preventDefault();
+        window.location = 'index.html?id=' + USER_ID;
+    }
+
+    function returnPerfil(event) {
+        event.preventDefault();
+        window.location = 'perfil.html?id=' + USER_ID;
     }
 
     function time() {

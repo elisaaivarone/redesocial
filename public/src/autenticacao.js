@@ -42,4 +42,4 @@ $(document).ready(function() {
         event.preventDefault();
         window.location = "cadastro.html";
     });
-})
+});

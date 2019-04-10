@@ -12,7 +12,7 @@ body {
         height: 150px;
         margin-left: -15px;
     }
-    #perfil{
+    #img-profile{
         width: 50%;
     }
     .nav-logo {
@@ -31,21 +31,19 @@ body {
         padding-top: 60px;
     }
     
-    /*.perfil {
-        display: flex;
-        flex-direction: column;
-        background-color:#FFE16F;
-    }*/
 /* Loggin e Cadastro */
-    #text-logo{
-        color: #DB9B79;
+    .title-login{
+    font-family: 'Roboto Slab', serif;
+    font-size: 18px;
+       color:black;
     }
+    
     .container {
         display: flex;
         justify-content: center;
         margin-top: 40px;
      }
-    
+     
     .input-login{
        margin-top: 8px;
        
@@ -56,11 +54,14 @@ body {
         margin-top: 0%;
     }
     
-    .title-login,
+    
     .submit,
-    .create-btn {
+    .create-btn,
+    .text-logo,
+    .name-user{
         font-family: 'Roboto Slab', serif;
         font-size: 18px;
+        color: #DB9B79;
     }
     
     .title-signup {
@@ -104,6 +105,15 @@ body {
 .name {
     padding-top: 10%;
 }
+/*Perfil*/
+.line-perfil {
+    margin:5px 0 5px 0;
+    color:gray;
+}
+.painel-body {
+    height: 300px;
+    margin-left: -10px;
+}
 
 @media screen and (max-width:700px) {
     #img-timeline,
@@ -113,17 +123,21 @@ body {
     .form-group {
         box-shadow: none;
     }
-    .txtarea {
-        width: 400px;
-    }
-    .list-group {
-        width: 400px;
+    .txtarea,
+    .painel-body,
+    .list-group{
+        width: 350px;
     }
 }
 
-@media screen and (max-width:1200px) {
-    #text-timeline {}
+
+@media screen and (max-width: 767px) {
+    .sidenav {
+      height: auto;
+      padding: 15px;
+    }
 }
+
     .like {
         border: none;
         width: 15%;

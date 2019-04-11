@@ -97,12 +97,12 @@ Pesquisa com usuários:
 
 #### Criação de uma conta de usuário e início da sessão
 
-![Página Login](public/imagem/login.png)
+![Página Login](public/imagem/login.jpg)
 
 #### Timeline da rede social
 
-![Página Timeline](public/imagem/timeline.png)
+![Página Timeline](public/imagem/timeline.jpg)
 
 #### Edição de perfil
 
-![Página Editar Perfil](public/imagem/editperfil.jpeg)
+![Página Editar Perfil](public/imagem/editperfil.jpg)

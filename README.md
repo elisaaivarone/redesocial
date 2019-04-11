@@ -97,59 +97,12 @@ Pesquisa com usuários:
 
 #### Criação de uma conta de usuário e início da sessão
 
-![Página Login](public/imagem/login.png){:height="50%" width="50%"}
+![Página Login](public/imagem/login.png){:height="50px" width="50px"}
 
 #### Timeline da rede social
 
-![Página Timeline](public/imagem/timeline.png){:height="50%" width="50%"}
+![Página Timeline](public/imagem/timeline.png){:height="50px" width="50px"}
 
 #### Edição de perfil
 
-![Página Editar Perfil](public/imagem/editperfil.jpeg){:height="50%" width="50%"}
-
-## Checklist
-
-### Geral
-
- * [ ] O produto final segue o que foi especificado no desenho.
-
-### README.md
-
- * [ ] Definição do produto
- * [ ] Resumo das entrevistas com usuários
- * [ ] Link/imagens dos protótipos de baixa fidelidade
- * [ ] Conclusões dos testes de usuário feitos no HTML
-
-### Criação de conta (sign up)
-
- * [ ] Permite criar conta.
- * [ ] Valida email.
- * [ ] Valida senha.
- * [ ] Mostra mensagens de erro.
-
-### Início de sessão (sign in)
-
- * [ ] Permite iniciar sessão.
- * [ ] Valida email.
- * [ ] Valida senha.
- * [ ] Mostra mensagens de erro.
-
-### Timeline
-
- * [ ] Mostra a timeline.
- * [ ] Permite fazer novas publicações.
- * [ ] Permite apagar publicações.
- * [ ] Pede confirmação antes de apagar publicações.
- * [ ] Permite editar publicação no mesmo lugar (in place).
- * [ ] Permite filtrar publicações por público/privado.
- * [ ] Permite marcar publicações como gostei (like, coração, estrela, etc).
- * [ ] Permite ver quantos likes, estrelas, corações (ou o que for utilizar) uma publicação recebeu.
-
-### Hacker Edition
-
- * [ ] Permite adicionar amigos.
- * [ ] Permite deletar amigos.
- * [ ] Permite compartilhamento de publicações.
- * [ ] Permite comentar ou responder uma publicação.
- * [ ] Permite editar perfil.
- * [ ] Permite ver perfil ou timeline.
+![Página Editar Perfil](public/imagem/editperfil.jpeg){:height="50px" width="50px"}

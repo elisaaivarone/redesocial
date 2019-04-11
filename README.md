@@ -97,15 +97,15 @@ Pesquisa com usuários:
 
 #### Criação de uma conta de usuário e início da sessão
 
-![Página Login](public/imagem/login.png)
+![Página Login](public/imagem/login.png | width=100)
 
 #### Timeline da rede social
 
-![Página Timeline](public/imagem/timeline.png)
+![Página Timeline](public/imagem/timeline.png | width=100)
 
 #### Edição de perfil
 
-![Página Editar Perfil](public/imagem/editperfil.jpeg)
+![Página Editar Perfil](public/imagem/editperfil.jpeg | width=100)
 
 ## Checklist
 

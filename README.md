@@ -23,8 +23,8 @@ Neste projeto **desenvolvemos uma _rede social_  nomeada por "Kids Life"** para 
 
 Com intuito de avaliar a necessidade de se ter uma rede social para o público alvo mencionado, elaboramos uma pesquisa e notamos que essa pratica de compartilhamento de informações entre mães, pais e responsáveis já é usual, porém em meios aletórios. Dessa forma, concluimos que é necessário ter uma rede social para centralizar essas informações, dúvidas e experiências.
 
-![Pesquisa](imagem/pesquisa1.jpeg)
-![Pesquisa](imagem/pesquisa2.jpeg)
+![Pesquisa](public/imagem/pesquisa1.jpeg)
+![Pesquisa](public/imagem/pesquisa2.jpeg)
 
 ## Definição do produto
 
@@ -97,15 +97,15 @@ Pesquisa com usuários:
 
 #### Criação de uma conta de usuário e início da sessão
 
-![Página Login](imagem/login.png)
+![Página Login](public/imagem/login.png)
 
 #### Timeline da rede social
 
-![Página Timeline](imagem/timeline.png)
+![Página Timeline](public/imagem/timeline.png)
 
 #### Edição de perfil
 
-![Página Editar Perfil](imagem/editperfil.jpeg)
+![Página Editar Perfil](public/imagem/editperfil.jpeg)
 
 ## Checklist
 

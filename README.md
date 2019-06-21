@@ -1,4 +1,3 @@
-# Data Lovers
 
 ## Índice
 * [Preâmbulo](#preâmbulo)

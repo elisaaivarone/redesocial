@@ -17,21 +17,27 @@ Elementos básicos da rede social Kids Life:
 - Curtir conteúdos
 - Filtrar conteúdos
 
-## Principais usuários do produto:
+### Principais usuários do produto:
 Mães, pais e responsáveis que querem compartilhar experiências e conhecer mais sobre saúde, educação, alimentação das crianças.
-Descobrimento das necessidades dos usuários:
+
+### Descobrimento das necessidades dos usuários:
 Através de relatos de mães, pais e responsáveis interessados em temas sobre crianças e ter acesso a experiências de outras mães.
-Problemas que o produto resolve para estes usuários:
+
+### Problemas que o produto resolve para estes usuários:
 Mais segurança na hora de realizar algo relacionado a crianças, por ter outras experiências compartilhadas.
-Objetivos destes usuários com relação ao produto:
+
+### Objetivos destes usuários com relação ao produto:
 Além de compartilhar as suas experiências e dúvidas, ter acesso a casos similares e mães, pais e responsáveis com interesses em comum.
-Principais funcionalidades do produto:
+
+### Principais funcionalidades do produto:
 Mães, pais e responsáveis compartilhando e adquirindo novas informações sobre temas relacionados a suas crianças.
-Conferência se o produto está funcionando para resolver os problemas:
+
+### Conferência se o produto está funcionando para resolver os problemas:
 Através de testes de usabilidade com protótipo e pesquisa com possíveis usuários
+
 Protótipo: Marvel
 
 Pesquisa com usuários: Link da pesquisa
 
-Garantir que os usuários utilizem este produto:
+### Garantir que os usuários utilizem este produto:
 Apresentando as vantagens e diferenças que ele pode trazer para os usuários.

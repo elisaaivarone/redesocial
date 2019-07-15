@@ -9,17 +9,6 @@
                     let childKey = childSnapshot.key;
                     let childData = childSnapshot.val();
                     creatPost(childData.text, childData.likes, childData.filter, childData.date, childKey)
-
-                    // let commentsRef = database.ref("tasks/" + USER_ID + "/" + childKey + "/" + "comments/")
-                    // commentsRef.once('value', function(snapshot) {
-                    //     snapshot.forEach(function(childSnapshot) {
-                    //         let childKeyComment = childSnapshot.key;
-                    //         let childDataComment = childSnapshot.val();
-                    // console.log(childDataComment.comment, childKey)
-                    // modalComment(childKey, childDataComment.comment)
-                    // commentDelete(childKey, childKeyComment)
-                    //     });
-                    // });
                 });
             })
 
@@ -29,9 +18,6 @@
             } else {
                 storage.child(USER_ID).getDownloadURL().then(url => {
                     $("#photo").attr("src", url)
-                        // namePost(snapshot.val().name, url)
-                        // namePostFilter(snapshot.val().name, url)
-                        //console.log(snapshot.val().name, snapshot.val().photo)
                 })
             }
         })
@@ -53,9 +39,6 @@
         $("#home").click(returnHome)
 
         $("#profile").click(returnPerfil)
-
-        // $("#filter-total").click(returnHome)
-
     })
 
     function filterPublic(e) {
@@ -98,19 +81,6 @@
         })
     }
 
-    // function namePostFilter(name, photo) {
-    //     $(`div[data-total-filter-id=${USER_ID}]`).prepend(`
-    //         <div class="row align-items-center">
-    //         <div class="col-xs-4">
-    //         <img src=${photo} class="img-responsive img-circle" id="photo" alt=${name}></img>
-    //         </div>
-    //         <div class="col-xs-8 align-items-end">
-    //         <p class="text text-left name" id="name-user">${name}</p>
-    //         </div>
-    //         </div>
-    // `)
-    // }
-
     function filterPosts(post, likes, filterPost, datePost, key) {
         $("#post-total, #container-post").empty()
         $("#post-total-filter").prepend(`
@@ -129,25 +99,11 @@
         <button type="button" class="btn btn-primary" data-like-id=${key}><i class="far fa-thumbs-up"></i> <span data-like-id=${key} id="likes">${likes}</span> </button>
         </article>
     `);
-        let oldText = $("#text-post").text()
+        const oldText = $("#text-post").text()
         likePost(key)
         editPost(key, oldText)
         postDelete(key)
     }
-
-    // function namePost(name, photo) {
-    //     $(`div[data-total-id=${USER_ID}]`).prepend(`
-    //         <div class="row align-items-center">
-    //         <div class="col-xs-4">
-    //         <img src=${photo} class="img-responsive img-circle" id="photo" alt=${name}></img>
-    //         </div>
-    //         <div class="col-xs-8 align-items-end">
-    //         <p class="text text-left name" id="name-user">${name}</p>
-    //         </div>
-    //         </div>
-    // `)
-    //     console.log(name, photo)
-    // }
 
     function creatPost(post, likes, filterPost, datePost, key) {
         $("#post-total").prepend(`
@@ -167,60 +123,12 @@
     <article data-comment-id=${key} style="display:none"></article>
     </article>
     `);
-        let oldText = $(`p[data-text-id=${key}]`).text()
+        const oldText = $(`p[data-text-id=${key}]`).text()
         likePost(key)
         editPost(key, oldText)
         postDelete(key)
             // commentPost(key)
     }
-
-    // function commentPost(key) {
-    //     $(`button[data-comment-text-id=${key}]`).click(function(event) {
-    //         console.log(key)
-    //         event.preventDefault();
-    //         let comments = $(`textarea[data-comment-id=${key}]`).val()
-    //         console.log(comments)
-    //         $('form')[1].reset()
-    //         let commentPost = database.ref("tasks/" + USER_ID + "/" + key + "/" + "comments").push({
-    //                 comment: comments
-    //             })
-    //             // commentDelete(key, commentPost.key)
-    //         modalComment(key, comments)
-    //     })
-    // }
-
-    //     function modalComment(key, comments) {
-    //         $(`article[data-comment-id=${key}]`).prepend(`
-    //         <div class="list-group-item well">
-    //         <div class="row align-items-end">
-    //         <div class="col-xs-12">
-    //         <p class="text">${comments}</p>
-
-    //         </div>
-    //         </div>
-    //         </div>     
-    // `)
-    //         toggleButton(key)
-    //     }
-
-    //     function toggleButton(key) {
-    //         console.log(key)
-    //         $(`button[data-comment-id=${key}]`).click(function() {
-    //             $(`article[data-comment-id=${key}]`).toggle()
-    //         })
-    //     }
-
-    // function commentDelete(key, keyComment) {
-    //     $(`button[data-delete-comment-id=${key}]`).click(function(event) {
-    //         console.log(keyComment)
-    //         event.preventDefault();
-    //         $("#btn-delete-comment").click(function(event) {
-    //             event.preventDefault()
-    //             $(`button[data-delete-comment-id=${key}]`).parent().remove()
-    //             database.ref("tasks/" + USER_ID + "/" + key + "/" + "comments/" + keyComment).remove()
-    //         })
-    //     })
-    // }
 
     function likePost(key) {
         let count = 0;
@@ -261,8 +169,8 @@
         `)
             $("#btn-edit").click(function(event) {
                 event.preventDefault();
-                let newText = $("#text-edit").val()
-                let newDate = time()
+                const newText = $("#text-edit").val()
+                const newDate = time()
                 $(`p[data-text-id=${key}]`).text(newText)
                 $(`p[data-date-id=${key}]`).text(newDate)
                 database.ref("tasks/" + USER_ID + "/" + key).update({
@@ -294,11 +202,11 @@
 
     function newPost(event) {
         event.preventDefault();
-        let post = $("#public").val()
-        let postLikes = 0
-        let datePost = time()
-        let selectPost = $("#select-post option:selected").text()
-        let newPost = database.ref("tasks/" + USER_ID).push({
+        const post = $("#public").val()
+        const postLikes = 0
+        const datePost = time()
+        const selectPost = $("#select-post option:selected").text()
+        const newPost = database.ref("tasks/" + USER_ID).push({
                 comments: "",
                 text: post,
                 likes: 0,

@@ -40,7 +40,6 @@ body {
 
 
 /* Loggin e Cadastro */
-
 .title-login {
     font-family: 'Roboto Slab', serif;
     font-size: 18px;
@@ -80,7 +79,6 @@ body {
 
 
 /* Timeline */
-
 .list-group-item {
     word-wrap: break-word;
     margin: 2% 4% 0% 4%;
@@ -118,7 +116,6 @@ body {
 
 
 /*Perfil*/
-
 .line-perfil {
     margin: 5px 0 5px 0;
     color: gray;

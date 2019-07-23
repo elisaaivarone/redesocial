@@ -1,6 +1,6 @@
-    let database = firebase.database();
-    let USER_ID = window.location.search.match(/\?id=(.*)/)[1]
-    let storage = firebase.storage().ref("photos")
+    const database = firebase.database();
+    const USER_ID = window.location.search.match(/\?id=(.*)/)[1]
+    const storage = firebase.storage().ref("photos")
 
     $(document).ready(function() {
         database.ref("tasks/" + USER_ID).once('value')

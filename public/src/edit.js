@@ -45,34 +45,31 @@ $(document).ready(function() {
             alert("Erro no carregamento das informações.")
         });
 
-    $("#save").click(function() {
-        let users = database.ref("users/" + USER_ID);
-
-        users.once("value")
-            .then(function(snapshot) {
-                snapshot.forEach(function(childSnapshot) {
-                    let childData = childSnapshot.val();
-                    let photo;
-                    if ($("#photo").val() === "") {
-                        photo = childData.photo;
-                    } else {
-                        photo = $("#photo").val();
-                    }
-
-                    let key = childSnapshot.key;
-                    database.ref("users/" + USER_ID + "/" + key).update({
-                        about: $("#about").val(),
-                        city: $("#city").val(),
-                        kids: $("#kids").val(),
-                        name: $("#name").val(),
-                        photo: photo,
-                        state: $("#state").val(),
-                        status: $("#status").val(),
-                        years: $("#years").val()
-                    })
-
-                })
+$("#save").click(function() {
+    let users = database.ref("users/" + USER_ID);
+    users.once("value")
+    .then(function(snapshot) {
+        snapshot.forEach(function(childSnapshot) {
+            let childData = childSnapshot.val();
+            let photo;
+            if ($("#photo").val() === "") {
+                photo = childData.photo;
+            }else {
+                photo = $("#photo").val();
+            }
+            let key = childSnapshot.key;
+            database.ref("users/" + USER_ID + "/" + key).update({
+                about: $("#about").val(),
+                city: $("#city").val(),
+                kids: $("#kids").val(),
+                name: $("#name").val(),
+                photo: photo,
+                state: $("#state").val(),
+                status: $("#status").val(),
+                years: $("#years").val()
             })
+        })
+    })
         alert("Dados salvos com sucesso!")
         window.location = 'perfil.html?id=' + USER_ID;
     });

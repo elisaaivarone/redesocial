@@ -22,91 +22,101 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-inverse nav-timeline">
-        <div class="container-fluid">
-            <img id="img-timeline" class="img-responsive" src="imagem/logotipo.jpeg">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
+  <nav class="navbar navbar-inverse nav-timeline">
+    <div class="container-fluid">
+      <img id="img-timeline" class="img-responsive" src="imagem/logotipo.jpeg">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
         </button>
-                <h2 class="text-logo" class="navbar-brand">Kids Life</h2>
-            </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav navbar-right menu-style">
-                    <li><a href="#" id="home"><i class="fas fa-home"></i> Home</a></li>
-                    <li><a href="#" id="profile"><i class="far fa-user"></i> Perfil</a></li>
-                    <li class="active"><a href="#">Editar Perfil</a></li>
-                    <li><a href="index.html" id="signout"><span class="glyphicon glyphicon-user"></span>Sign Out</a></li>
-                </ul>
-            </div>
+        <h2 class="text-logo" class="navbar-brand">Kids Life</h2>
         </div>
-    </nav>
-    <section>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 ">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4>Editar Perfil</h4>
-                        </div>
-                        <div class="panel-body">
-                            <div class="box box-info">
-                                <div class="box-body">
-                                    <div class="col-sm-4">
-                                        <div>
-                                            <img alt="User Pic" id="img-profile" class="img-circle img-responsive">
-                                            <input type="file" id="photo">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <h2 style="color:#00b1b1;">
-                                            <input type="text" class="form-control" id="name">
-                                        </h2>
-                                        <span>
-                      <p><i class="fas fa-book-reader"></i> Sobre mim:</p>
-                      <textarea class="form-control" id="about"></textarea>
-                    </span>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                    <hr style="margin:5px 0 5px 0;">
-
-                                    <div class="col-sm-4 col-xs-6 tital"><i class="glyphicon glyphicon-briefcase"></i> Idade:</div>
-                                    <div class="col-sm-3"><input type="number" class="form-control" id="years"></div>
-                                    <div class="clearfix"></div>
-                                    <div class="bot-border"></div>
-
-                                    <div class="col-sm-4 col-xs-6 tital"><i class="glyphicon glyphicon-home"></i> Cidade:</div>
-                                    <div class="col-sm-6"><input type="text" class="form-control" id="city"></div>
-                                    <div class="clearfix"></div>
-                                    <div class="bot-border"></div>
-
-                                    <div class="col-sm-4 col-xs-6 tital"><i class="glyphicon glyphicon-map-marker"></i> Estado:</div>
-                                    <div class="col-sm-6"><input type="text" class="form-control" id="state"></div>
-                                    <div class="clearfix"></div>
-                                    <div class="bot-border"></div>
-
-                                    <div class="col-sm-4 col-xs-6 tital"><i class="fas fa-child"></i> Filho(s):</div>
-                                    <div class="col-sm-3"><input type="number" class="form-control" id="kids"></div>
-                                    <div class="clearfix"></div>
-                                    <div class="bot-border"></div>
-
-                                    <div class="col-sm-4 col-xs-6 tital"><i class="fas fa-heart"></i> Civil:</div>
-                                    <div class="col-sm-6"><input type="text" class="form-control" id="status"></div>
-                                    <div class="clearfix"></div>
-                                    <div class="bot-border"></div>
-
-                                    <button id="save" class="btn btn-primary" disabled>Salvar</button>
-                                    <button id="back" class="btn btn-danger" disabled>Voltar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right menu-style">
+        <li><a href="#" id="home"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="#" id="profile"><i class="far fa-user"></i> Perfil</a></li>
+        <li class="active"><a href="#">Editar Perfil</a></li>
+        <li><a href="index.html" id="signout"><span class="glyphicon glyphicon-user"></span>Sign Out</a></li>
+      </ul>
+    </div>
+    </div>
+  </nav>
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 ">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4>Editar Perfil</h4>
             </div>
-        </div>
-    </section>
+      <div class="panel-body">
+        <div class="box box-info">
+          <div class="box-body">
+            <div class="col-sm-4">
+              <div class="img"> 
+              <img alt="User Pic" id="img-profile" class="img-circle img-responsive">
+              <input type="file" id="photo">
+              </div>
+            </div>
+          <div class="col-sm-6">
+            <h2 style="color:#00b1b1;">
+              <input type="text" class="form-control" id="name">
+            </h2>
+            <span>
+              <p><i class="fas fa-book-reader"></i> Sobre mim:</p>
+                <textarea class="form-control" id="about"></textarea>
+            </span>
+          </div>
+          <div class="clearfix"></div>
+            <hr style="margin:5px 0 5px 0;">
+          <div class="col-sm-4 col-xs-6 tital">
+              <i class="glyphicon glyphicon-briefcase"></i> Idade:</div>
+          <div class="col-sm-3">
+              <input type="number" class="form-control" id="years"></div>
+
+          <div class="clearfix"></div>
+          <div class="bot-border"></div>
+          <div class="col-sm-4 col-xs-6 tital">
+              <i class="glyphicon glyphicon-home"></i> Cidade:</div>
+          <div class="col-sm-6">
+              <input type="text" class="form-control" id="city"></div>
+
+          <div class="clearfix"></div>
+          <div class="bot-border"></div>
+          <div class="col-sm-4 col-xs-6 tital">
+              <i class="glyphicon glyphicon-map-marker"></i> Estado:</div>
+          <div class="col-sm-6">
+              <input type="text" class="form-control" id="state"></div>
+
+          <div class="clearfix"></div>
+          <div class="bot-border"></div>
+          <div class="col-sm-4 col-xs-6 tital">
+              <i class="fas fa-child"></i> Filho(s):
+            </div>
+          <div class="col-sm-3"><input type="number" class="form-control" id="kids"></div>
+
+          <div class="clearfix"></div>
+          <div class="bot-border"></div>
+          <div class="col-sm-4 col-xs-6 tital">
+              <i class="fas fa-heart"></i> Civil:</div>
+          <div class="col-sm-6">
+              <input type="text" class="form-control" id="status"></div>
+
+          <div class="clearfix"></div>
+          <div class="bot-border"></div>
+            <button id="save" class="btn btn-primary" disabled>Salvar</button>
+              <button id="back" class="btn btn-danger" disabled>Voltar</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+</div>
+</div>
+</section>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script src="src/edit.js"></script>
